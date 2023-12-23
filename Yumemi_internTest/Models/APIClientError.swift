@@ -7,3 +7,10 @@
 
 import Foundation
 
+enum APIClientError: Error {
+    case urlError
+    case responseError
+    case parseError
+    case sessionError
+    case unknownError
+}
