@@ -8,9 +8,10 @@
 import Foundation
 
 struct APIPostInfo: Codable {
-    var id: String = UUID().uuidString
     let name: String
     let birthday: YearMonthDay
+    let blood_type: String
+    let today: YearMonthDay
 }
 
 struct YearMonthDay: Codable {
