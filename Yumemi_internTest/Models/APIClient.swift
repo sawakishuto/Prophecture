@@ -17,7 +17,8 @@ struct APIClient {
         )
 
         guard let url = urlComponents?.url else {
-            return .failure()
+            print("❌invalidURL")
+            return
         }
         let body = try? JSONSerialization.data(withJSONObject: [
             "name": name,
@@ -32,8 +33,28 @@ struct APIClient {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.allHTTPHeaderFields = ["API-Version": "v1"]
 
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+                guard let response = response as? HTTPURLResponse else {
+                    print("❌invalidResponse")
+                    return
+                }
 
-
+                if response.statusCode == 200 {
+                    do{
+                        print("⭕️session succeed")
+                        let decodeDatad = try JSONDecoder().decode(APIResponseInfo.self, from: data)
+                        return .success(decodedData)
+                    } catch {
+                        print("❌parse failure")
+                    }
+                } else {
+                    print("❌session failure")
+                    return
+                }
+        } catch {
+            .failure(.sessionError)
+        }
     }
 
 }
