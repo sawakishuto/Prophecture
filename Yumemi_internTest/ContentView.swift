@@ -10,7 +10,12 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    @ObservedObject var ViewModel = FortuneViewModel()
+    @State private var name: String = ""
+    @State private var year: Int = 2022
+    @State private var month: Int = 11
+    @State private var day: Int = 11
+    @State private var blood_type: String = "a"
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
