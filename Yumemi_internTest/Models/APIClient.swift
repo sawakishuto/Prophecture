@@ -9,7 +9,7 @@ import Foundation
 
 struct APIClient {
     private let baseURL = URL(string: "https://yumemi-ios-junior-engineer-codecheck.app.swift.cloud")!
-    func StartSession(name: String, birthday: YearMonthDay, blood_type: String, today: YearMonthDay) async -> Result<APIResponse, APIClientError> {
+    func StartSession(name: String, birthday: YearMonthDay, blood_type: String, today: YearMonthDay) async -> Result<APIResponseInfo, Error> {
 
         let urlComponents = URLComponents(
             url: baseURL.appending(path: "/my_fortune"),
@@ -43,7 +43,7 @@ struct APIClient {
                 if response.statusCode == 200 {
                     do{
                         print("⭕️session succeed")
-                        let decodeDatad = try JSONDecoder().decode(APIResponseInfo.self, from: data)
+                        let decodedData: APIResponseInfo = try JSONDecoder().decode(APIResponseInfo.self, from: data)
                         return .success(decodedData)
                     } catch {
                         print("❌parse failure")
