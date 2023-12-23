@@ -17,6 +17,7 @@
 		0804BBD92B346672003A484A /* Yumemi_internTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0804BBD82B346672003A484A /* Yumemi_internTestUITests.swift */; };
 		0804BBDB2B346672003A484A /* Yumemi_internTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0804BBDA2B346672003A484A /* Yumemi_internTestUITestsLaunchTests.swift */; };
 		084D83472B36552E002E5737 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084D83462B36552E002E5737 /* Model.swift */; };
+		084D83542B366DA2002E5737 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084D83532B366DA2002E5737 /* APIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		0804BBD82B346672003A484A /* Yumemi_internTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_internTestUITests.swift; sourceTree = "<group>"; };
 		0804BBDA2B346672003A484A /* Yumemi_internTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_internTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		084D83462B36552E002E5737 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		084D83532B366DA2002E5737 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				084D83462B36552E002E5737 /* Model.swift */,
+				084D83532B366DA2002E5737 /* APIClient.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				0804BBBB2B346670003A484A /* ContentView.swift in Sources */,
 				0804BBB92B346670003A484A /* Yumemi_internTestApp.swift in Sources */,
 				0804BBC52B346672003A484A /* Yumemi_internTest.xcdatamodeld in Sources */,
+				084D83542B366DA2002E5737 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
