@@ -32,5 +32,6 @@ struct APIResponseInfo: Decodable {
 struct MonthDay: Decodable {
     let month: Int
     let day: Int
+    
 }
 

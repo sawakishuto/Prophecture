@@ -20,9 +20,9 @@ final class FortuneViewModel: ObservableObject {
                     name: fortuneResult.name,
                     capital: fortuneResult.capital,
                     citizen_day: MonthDay(
-                        month: fortuneResult.citizen_day?.month ?? 00,
-                        day: fortuneResult.citizen_day?.day ?? 00
-                    ),
+                        month: fortuneResult.citizen_day?.month ?? 0,
+                        day: fortuneResult.citizen_day?.day ?? 0
+                                         ),
                     has_coast_line: fortuneResult.has_coast_line,
                     logo_url: fortuneResult.logo_url,
                     brief: fortuneResult.brief)
@@ -31,5 +31,6 @@ final class FortuneViewModel: ObservableObject {
                 print("\(APIError)")
             }
         }
+        print(fortuneResults)
     }
 }
