@@ -18,7 +18,6 @@ struct APIClient {
 
         guard let url = urlComponents?.url else {
             print("❌invalidURL")
-            return
         }
         let body = try? JSONSerialization.data(withJSONObject: [
             "name": name,
@@ -37,7 +36,6 @@ struct APIClient {
             let (data, response) = try await URLSession.shared.data(for: request)
                 guard let response = response as? HTTPURLResponse else {
                     print("❌invalidResponse")
-                    return
                 }
 
                 if response.statusCode == 200 {
@@ -50,10 +48,9 @@ struct APIClient {
                     }
                 } else {
                     print("❌session failure")
-                    return
                 }
         } catch {
-            .failure(.sessionError)
+            return .failure(Error.self as! Error)
         }
     }
 
