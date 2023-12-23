@@ -21,12 +21,12 @@ struct YearMonthDay: Codable {
 }
 
 struct APIResponseInfo: Identifiable, Decodable {
-    let id: Int
+    var id: String = UUID().uuidString
     let name: String
     let capital: String
     let citizen_day: MonthDay?
     let has_coast_line: Bool
-    let logo_url: String
+    let logo_url: String?
     let brief: String
 }
 
