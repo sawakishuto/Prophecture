@@ -9,7 +9,7 @@ import Foundation
 
 struct APIClient {
     private let baseURL = URL(string: "https://yumemi-ios-junior-engineer-codecheck.app.swift.cloud")!
-    func StartSession(name: String, birthday: YearMonthDay, blood_type: String, today: YearMonthDay) async -> Result<APIResponseInfo, Error> {
+    func StartSession(name: String, birthday: YearMonthDay, blood_type: String, today: YearMonthDay) async -> Result<APIResponseInfo, APIClientError> {
 
         let urlComponents = URLComponents(
             url: baseURL.appending(path: "/my_fortune"),
@@ -18,6 +18,7 @@ struct APIClient {
 
         guard let url = urlComponents?.url else {
             print("❌invalidURL")
+            return .failure(.urlError)
         }
         let body = try? JSONSerialization.data(withJSONObject: [
             "name": name,
@@ -36,6 +37,7 @@ struct APIClient {
             let (data, response) = try await URLSession.shared.data(for: request)
                 guard let response = response as? HTTPURLResponse else {
                     print("❌invalidResponse")
+                    return .failure(.responseError)
                 }
 
                 if response.statusCode == 200 {
@@ -45,12 +47,14 @@ struct APIClient {
                         return .success(decodedData)
                     } catch {
                         print("❌parse failure")
+                        return .failure(.parseError)
                     }
                 } else {
                     print("❌session failure")
+                    return .failure(.sessionError)
                 }
         } catch {
-            return .failure(Error.self as! Error)
+            return .failure(.unknownError)
         }
     }
 
