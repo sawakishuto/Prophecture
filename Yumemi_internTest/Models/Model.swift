@@ -20,8 +20,7 @@ struct YearMonthDay: Codable {
     let day: Int
 }
 
-struct APIResponseInfo: Identifiable, Decodable {
-    var id: String = UUID().uuidString
+struct APIResponseInfo: Decodable {
     let name: String
     let capital: String
     let citizen_day: MonthDay?
