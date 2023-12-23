@@ -102,7 +102,7 @@
 			children = (
 				0804BBB82B346670003A484A /* Yumemi_internTestApp.swift */,
 				0804BBBA2B346670003A484A /* ContentView.swift */,
-				084D83462B36552E002E5737 /* Model.swift */,
+				084D83522B366CE4002E5737 /* Models */,
 				0804BBBC2B346672003A484A /* Assets.xcassets */,
 				0804BBC12B346672003A484A /* Persistence.swift */,
 				0804BBC32B346672003A484A /* Yumemi_internTest.xcdatamodeld */,
@@ -136,6 +136,14 @@
 			path = Yumemi_internTestUITests;
 			sourceTree = "<group>";
 		};
+		084D83522B366CE4002E5737 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				084D83462B36552E002E5737 /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,6 +160,8 @@
 			dependencies = (
 			);
 			name = Yumemi_internTest;
+			packageProductDependencies = (
+			);
 			productName = Yumemi_internTest;
 			productReference = 0804BBB52B346670003A484A /* Yumemi_internTest.app */;
 			productType = "com.apple.product-type.application";
@@ -224,6 +234,8 @@
 				Base,
 			);
 			mainGroup = 0804BBAC2B346670003A484A;
+			packageReferences = (
+			);
 			productRefGroup = 0804BBB62B346670003A484A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
