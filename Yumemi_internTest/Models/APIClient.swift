@@ -22,9 +22,17 @@ struct APIClient {
         }
         let body = try? JSONSerialization.data(withJSONObject: [
             "name": name,
-            "birthDay": birthday,
-            "blood_type": blood_type,
-            "today": today
+                        "birthday": [
+                            "year": birthday.year,
+                            "month": birthday.month,
+                            "day": birthday.day
+                        ],
+                        "blood_type": blood_type,
+                        "today":[
+                            "year": today.year,
+                            "month": today.month,
+                            "day": today.day
+                        ]
         ])
 
         var request = URLRequest(url: url)
