@@ -16,16 +16,19 @@ final class FortuneViewModel: ObservableObject {
             let executionResult = await self.apiClient.StartSession(name: name, birthday: birthday, blood_type: blood_type, today: today)
             switch executionResult {
             case .success(let fortuneResult):
-                self.fortuneResults = APIResponseInfo(
-                    name: fortuneResult.name,
-                    capital: fortuneResult.capital,
-                    citizen_day: MonthDay(
-                        month: fortuneResult.citizen_day?.month ?? 0,
-                        day: fortuneResult.citizen_day?.day ?? 0
-                                         ),
-                    has_coast_line: fortuneResult.has_coast_line,
-                    logo_url: fortuneResult.logo_url,
-                    brief: fortuneResult.brief)
+                await MainActor.run {
+                    self.fortuneResults = APIResponseInfo(
+                        name: fortuneResult.name,
+                        capital: fortuneResult.capital,
+                        citizen_day: MonthDay(
+                            month: fortuneResult.citizen_day?.month ?? 0,
+                            day: fortuneResult.citizen_day?.day ?? 0
+                                             ),
+                        has_coast_line: fortuneResult.has_coast_line,
+                        logo_url: fortuneResult.logo_url,
+                        brief: fortuneResult.brief)
+                }
+
 
             case .failure(let APIError):
                 print("\(APIError)")
