@@ -12,9 +12,9 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var ViewModel = FortuneViewModel()
     @State private var name: String = ""
-    @State private var year: Int = 2022
-    @State private var month: Int = 11
-    @State private var day: Int = 11
+    @State private var year: Int = 0000
+    @State private var month: Int = 0
+    @State private var day: Int = 0
     @State private var blood_type: String = "a"
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
@@ -43,7 +43,11 @@ struct ContentView: View {
                                             day: day
                                            ),
                                            blood_type: blood_type,
-                                           today: YearMonthDay(year: 2021, month: 12, day: 12)
+                                           today: YearMonthDay(
+                                            year: calComponent.year ?? 1995,
+                                            month: calComponent.month ?? 12,
+                                            day: calComponent.day ?? 25
+                                                              )
                 )
             }, label: {
                 Text("送信")
