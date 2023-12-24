@@ -16,6 +16,13 @@ struct ContentView: View {
     @State private var month: Int = 0
     @State private var day: Int = 0
     @State private var blood_type: String = "a"
+    @State private var returnName: String = ""
+    @State private var returnCapital: String = ""
+    @State private var returnCitizen_day: MonthDay = MonthDay(month: 12, day: 25)
+    @State private var returnHas_coast_line: Bool = false
+    @State private var returnLogo_url: String? = nil
+    @State private var returnBrief: String = ""
+
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
@@ -55,9 +62,14 @@ struct ContentView: View {
                                             day: calComponent.day ?? 25
                                                               )
                 )
+                returnLogo_url = ViewModel.fortuneResults.logo_url
             }, label: {
                 Text("送信")
             })
+
+            if let Logo_url = returnLogo_url {
+                AsyncImage(url: URL(string: Logo_url))
+            }
         }
     }
 
