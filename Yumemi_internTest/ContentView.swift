@@ -36,6 +36,12 @@ struct ContentView: View {
             TextField("", value: $day, format: .number)
                 .keyboardType(.numberPad)
             Button(action: {
+                let currentDate: Date = Date()
+                let calender = Calendar.current
+                let calComponent = calender.dateComponents([
+                    Calendar.Component.year, Calendar.Component.month, Calendar.Component.day
+                ], from: currentDate)
+
                 ViewModel.executionFortune(name: name,
                                            birthday: YearMonthDay(
                                             year: year,
