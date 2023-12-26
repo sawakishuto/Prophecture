@@ -32,7 +32,7 @@ struct ContentView: View {
     @State private var year: Int = 0000
     @State private var month: Int = 0
     @State private var day: Int = 0
-    @State private var blood_type: String = "a"
+    @State private var blood_type: Blood_type = .a
     @State private var returnName: String = ""
     @State private var returnCapital: String = ""
     @State private var returnCitizen_day: MonthDay = MonthDay(month: 12, day: 25)
@@ -50,103 +50,109 @@ struct ContentView: View {
         VStack {
             Text("名前を入力してください")
             TextField("しゅうと", text: $name)
+
             Text("血液型を入力してください")
-            TextField("しゅうと", text: $blood_type)
-            Text("生年月日を入力してください")
-            HStack {
-                Picker(selection: self.$year, label: Text("年")){
-                    ForEach(1950..<2025){ _x in
-                        Text("\(_x)")
-                    }
-                }
-                Picker(selection: self.$month, label: Text("月")){
-                    ForEach(1..<12){ _x in
-                        Text("\(_x)")
-                    }
-                }
-                Picker(selection: self.$day, label: Text("日")){
-                    if self.month != 1 {
-                        ForEach(1..<32){ _x  in
-                            Text("\(_x)")
-                        }
-                    } else {
-                        ForEach(1..<29){ _x in
-                            Text("\(_x)")
-                        }
-                    }
+            Picker(selection: $blood_type, label: Text("")) {
+                ForEach(Blood_type.allCases) { blood in
+                    Text("\(blood.blood_type)")
                 }
             }
-            Button(action: {
-                let currentDate: Date = Date()
-                let calender = Calendar.current
-                let calComponent = calender.dateComponents([
-                    Calendar.Component.year, Calendar.Component.month, Calendar.Component.day
-                ], from: currentDate)
+                .pickerStyle(.menu)
+                .padding(.top, 40)
+                Text("生年月日を入力してください")
+                HStack {
+                    Picker(selection: self.$year, label: Text("年")){
+                        ForEach(1950..<2025){ _x in
+                            Text("\(_x)")
+                        }
+                    }
+                    Picker(selection: self.$month, label: Text("月")){
+                        ForEach(1..<12){ _x in
+                            Text("\(_x)")
+                        }
+                    }
+                    Picker(selection: self.$day, label: Text("日")){
+                        if self.month != 1 {
+                            ForEach(1..<32){ _x  in
+                                Text("\(_x)")
+                            }
+                        } else {
+                            ForEach(1..<29){ _x in
+                                Text("\(_x)")
+                            }
+                        }
+                    }
+                }
+                Button(action: {
+                    let currentDate: Date = Date()
+                    let calender = Calendar.current
+                    let calComponent = calender.dateComponents([
+                        Calendar.Component.year, Calendar.Component.month, Calendar.Component.day
+                    ], from: currentDate)
 
-                ViewModel.executionFortune(
-                    name: name,
-                    birthday: YearMonthDay(
-                        year: year + 1950,
-                        month: month + 1,
-                        day: day + 1
-                    ),
-                    blood_type: blood_type,
-                    today: YearMonthDay(
-                        year: calComponent.year ?? 1995,
-                        month: calComponent.month ?? 12,
-                        day: calComponent.day ?? 25
+                    ViewModel.executionFortune(
+                        name: name,
+                        birthday: YearMonthDay(
+                            year: year + 1950,
+                            month: month + 1,
+                            day: day + 1
+                        ),
+                        blood_type: blood_type.blood_type,
+                        today: YearMonthDay(
+                            year: calComponent.year ?? 1995,
+                            month: calComponent.month ?? 12,
+                            day: calComponent.day ?? 25
+                        )
                     )
-                )
-                returnLogo_url = ViewModel.fortuneResults.logo_url
-//                self.ViewType.viewType = .firstPage
-            }, label: {
-                Text("送信")
-            })
-            if let Logo_url = returnLogo_url {
-                AsyncImage(url: URL(string: Logo_url))
+                    returnLogo_url = ViewModel.fortuneResults.logo_url
+                    //                self.ViewType.viewType = .firstPage
+                }, label: {
+                    Text("送信")
+                })
+                if let Logo_url = returnLogo_url {
+                    AsyncImage(url: URL(string: Logo_url))
+                }
+            }
+            .opacity(self.opacity)
+            .onAppear {
+                withAnimation(.linear(duration: 1.0)) {
+                    self.opacity = 1.0
+                }
             }
         }
-        .opacity(self.opacity)
-        .onAppear {
-            withAnimation(.linear(duration: 1.0)) {
-                           self.opacity = 1.0
-                       }
-        }
+
+        //    private func addItem() {
+        //        withAnimation {
+        //            let newItem = Item(context: viewContext)
+        //            newItem.timestamp = Date()
+        //
+        //            do {
+        //                try viewContext.save()
+        //            } catch {
+        //                let nsError = error as NSError
+        //                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        //            }
+        //        }
+        //    }
+
+        //    private func deleteItems(offsets: IndexSet) {
+        //        withAnimation {
+        //            offsets.map { items[$0] }.forEach(viewContext.delete)
+        //
+        //            do {
+        //                try viewContext.save()
+        //            } catch {
+        //                let nsError = error as NSError
+        //                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        //            }
+        //        }
+        //    }
+        //}
+
+        //private let itemFormatter: DateFormatter = {
+        //    let formatter = DateFormatter()
+        //    formatter.dateStyle = .short
+        //    formatter.timeStyle = .medium
+        //    return formatter
+        //}()
     }
-
-    //    private func addItem() {
-    //        withAnimation {
-    //            let newItem = Item(context: viewContext)
-    //            newItem.timestamp = Date()
-    //
-    //            do {
-    //                try viewContext.save()
-    //            } catch {
-    //                let nsError = error as NSError
-    //                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-    //            }
-    //        }
-    //    }
-
-    //    private func deleteItems(offsets: IndexSet) {
-    //        withAnimation {
-    //            offsets.map { items[$0] }.forEach(viewContext.delete)
-    //
-    //            do {
-    //                try viewContext.save()
-    //            } catch {
-    //                let nsError = error as NSError
-    //                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-    //            }
-    //        }
-    //    }
-    //}
-
-    //private let itemFormatter: DateFormatter = {
-    //    let formatter = DateFormatter()
-    //    formatter.dateStyle = .short
-    //    formatter.timeStyle = .medium
-    //    return formatter
-    //}()
-}
-
