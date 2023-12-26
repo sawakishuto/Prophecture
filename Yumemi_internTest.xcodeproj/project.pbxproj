@@ -115,11 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				0804BBB82B346670003A484A /* Yumemi_internTestApp.swift */,
-				0804BBBA2B346670003A484A /* ContentView.swift */,
-				084D835C2B3A5E72002E5737 /* RootView.swift */,
-				084D83642B3A6C5C002E5737 /* ViewTypeModel.swift */,
+				084D83662B3A79E9002E5737 /* Views */,
 				084D83622B3A67FF002E5737 /* ViewType.swift */,
-				084D83602B3A6444002E5737 /* FirstPageView.swift */,
 				084D835B2B37B3DD002E5737 /* ViewModels */,
 				084D83522B366CE4002E5737 /* Models */,
 				0804BBBC2B346672003A484A /* Assets.xcassets */,
@@ -168,9 +165,20 @@
 		084D835B2B37B3DD002E5737 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				084D83642B3A6C5C002E5737 /* ViewTypeModel.swift */,
 				084D83592B36B14E002E5737 /* FortuneViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		084D83662B3A79E9002E5737 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				084D835C2B3A5E72002E5737 /* RootView.swift */,
+				0804BBBA2B346670003A484A /* ContentView.swift */,
+				084D83602B3A6444002E5737 /* FirstPageView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
