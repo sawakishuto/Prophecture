@@ -9,7 +9,11 @@ import SwiftUI
 
 struct FirstPageView: View {
     let ViewType: ViewTypeModel
+    @State private var isShowComment: Bool = false
+    @State private var isShowtitle: Bool = false
+    @State private var bounceMessage: Bool = false
     var body: some View {
+
         ZStack {
             Image("firstviewImage")
                 .resizable()
@@ -19,8 +23,9 @@ struct FirstPageView: View {
             Image("firstViewTitleImage")
                 .resizable()
                 .scaledToFit()
-                .scaleEffect(0.8)
                 .padding(.bottom, 450)
+                .scaleEffect(isShowtitle ? 0.8 : 0.0)
+                .animation(.spring(duration: 2.4, bounce: 0.45), value: isShowtitle)
 
             Image("titleCommentImage")
                 .resizable()
@@ -28,12 +33,20 @@ struct FirstPageView: View {
                 .scaleEffect(0.7)
                 .padding(EdgeInsets(top: 0, leading: 240, bottom: 550, trailing: 0))
 
+
             Text("Tap To Start!")
                 .fontWeight(.black)
                 .font(.system(size: 35))
                 .padding(.top, 300)
+                .scaleEffect(isShowtitle ? 1.0 : 0.8)
+                .animation(.spring(duration: 1.0).repeatForever(), value: bounceMessage)
+
         }
-            .onTapGesture {
+        .onAppear{
+            isShowtitle.toggle()
+            bounceMessage.toggle()
+        }
+        .onTapGesture {
                 self.ViewType.viewType = .tabPage
             }
 
