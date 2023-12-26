@@ -35,15 +35,30 @@ struct ContentView: View {
             TextField("しゅうと", text: $name)
             Text("血液型を入力してください")
             TextField("しゅうと", text: $blood_type)
-            Text("生まれた年を入力してください")
-            TextField("", value: $year, format: .number)
-                .keyboardType(.numberPad)
-            Text("生まれた月を入力してください")
-            TextField("", value: $month, format: .number)
-                .keyboardType(.numberPad)
-            Text("生まれた日を入力してください")
-            TextField("", value: $day, format: .number)
-                .keyboardType(.numberPad)
+            Text("生年月日を入力してください")
+            HStack {
+                Picker(selection: self.$year, label: Text("年")){
+                    ForEach(1950..<2025){ _x in
+                        Text("\(_x)")
+                    }
+                }
+                Picker(selection: self.$month, label: Text("月")){
+                    ForEach(1..<12){ _x in
+                        Text("\(_x)")
+                    }
+                }
+                Picker(selection: self.$day, label: Text("日")){
+                    if self.month != 1 {
+                        ForEach(1..<32){ _x  in
+                            Text("\(_x)")
+                        }
+                    } else {
+                        ForEach(1..<29){ _x in
+                            Text("\(_x)")
+                        }
+                    }
+                }
+            }
             Button(action: {
                 let currentDate: Date = Date()
                 let calender = Calendar.current
