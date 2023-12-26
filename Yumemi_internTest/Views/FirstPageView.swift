@@ -22,7 +22,7 @@ struct FirstPageView: View {
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
-                .scaleEffect(expandImage ? 7.0 : 1.0)
+                .scaleEffect(expandImage ? 7.0 : 1.3)
                 .animation(.spring(duration: 2.7), value: expandImage)
 
 
