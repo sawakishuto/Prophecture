@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct RootView: View {
+    @State private var viewType: ViewType = .firstPage
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        switch viewType {
+        case .firstPage:
+            FirstPageView()
+        case .tabPage:
+            ContentView()
+        }
     }
 }
 
