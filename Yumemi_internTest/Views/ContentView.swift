@@ -69,9 +69,9 @@ struct ContentView: View {
                 ViewModel.executionFortune(
                     name: name,
                     birthday: YearMonthDay(
-                        year: year,
-                        month: month,
-                        day: day
+                        year: year + 1950,
+                        month: month + 1,
+                        day: day + 1
                     ),
                     blood_type: blood_type,
                     today: YearMonthDay(
