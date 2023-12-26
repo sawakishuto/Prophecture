@@ -6,8 +6,3 @@
 //
 
 import Foundation
-
-enum ViewType {
-    case firstPage
-    case tabPage
-}
