@@ -8,19 +8,14 @@
 import SwiftUI
 
 struct RootView: View {
-    @State private var viewType: ViewType = .firstPage
     @StateObject var viewTypeModel = ViewTypeModel()
 
     var body: some View {
-        switch viewType {
+        switch viewTypeModel.viewType {
         case .firstPage:
-            FirstPageView()
+            FirstPageView(ViewType: viewTypeModel)
         case .tabPage:
-            ContentView()
+            ContentView(ViewType: viewTypeModel)
         }
     }
-}
-
-#Preview {
-    RootView()
 }
