@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RootView: View {
     @State private var viewType: ViewType = .firstPage
+    @StateObject var viewTypeModel = ViewTypeModel()
 
     var body: some View {
         switch viewType {

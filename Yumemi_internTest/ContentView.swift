@@ -22,6 +22,7 @@ struct ContentView: View {
     @State private var returnHas_coast_line: Bool = false
     @State private var returnLogo_url: String? = nil
     @State private var returnBrief: String = ""
+    let ViewType: ViewTypeModel
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
