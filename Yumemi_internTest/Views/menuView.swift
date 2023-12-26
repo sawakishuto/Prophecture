@@ -16,9 +16,42 @@ struct menuView: View {
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
-                .onTapGesture {
+                .scaleEffect(1.01)
+
+            Button(action: {
+                isShowFortuneAlert = true
+            }, label: {
+                Image("menuMessage")
+                    .resizable()
+                    .scaledToFit()
+                    .scaleEffect(0.9)
+            })
+            .padding(.bottom, 450)
+            .alert("占いを始めますか？", isPresented: $isShowFortuneAlert) {
+                Button("いいえ") {
+                    isShowFortuneAlert = false
+                }
+                Button("はい") {
                     ViewType.viewType = .tabPage
                 }
+            }
+            Button {
+                isShowMapAlert = true
+            } label: {
+                Image("fortuneMapImage")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 350)
+                    .padding(.top, 350)
+            }
+        }
+        .alert("占いマップを見ますか？", isPresented: $isShowMapAlert) {
+            Button("いいえ") {
+                isShowMapAlert = false
+            }
+            Button("はい") {
+                ViewType.viewType = .mapPage
+            }
         }
             .opacity(self.opacity)
             .onAppear {
