@@ -9,6 +9,23 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    enum Blood_type: String, CaseIterable, Identifiable {
+        case a
+        case b
+        case o
+        case ab
+        var blood_type: String {
+            switch self {
+            case .a: return "a"
+            case .b: return "b"
+            case .o: return "o"
+            case .ab: return "ab"
+            }
+        }
+        var id: Self {
+            self
+        }
+    }
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var ViewModel = FortuneViewModel()
     @State private var name: String = ""
