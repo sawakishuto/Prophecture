@@ -10,8 +10,11 @@ import SwiftUI
 struct FirstPageView: View {
     let ViewType: ViewTypeModel
     @State private var isShowComment: Bool = false
-    @State private var isShowtitle: Bool = false
+    @State private var isShowTitle: Bool = false
     @State private var bounceMessage: Bool = false
+    @State private var expandImage: Bool = false
+    @State private var isClose: Bool = true
+
     var body: some View {
 
         ZStack {
