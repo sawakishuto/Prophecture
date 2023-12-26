@@ -24,6 +24,7 @@
 		084D83612B3A6444002E5737 /* FirstPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084D83602B3A6444002E5737 /* FirstPageView.swift */; };
 		084D83632B3A67FF002E5737 /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084D83622B3A67FF002E5737 /* ViewType.swift */; };
 		084D83652B3A6C5C002E5737 /* ViewTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084D83642B3A6C5C002E5737 /* ViewTypeModel.swift */; };
+		084D83682B3AB81D002E5737 /* menuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084D83672B3AB81C002E5737 /* menuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		084D83602B3A6444002E5737 /* FirstPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageView.swift; sourceTree = "<group>"; };
 		084D83622B3A67FF002E5737 /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
 		084D83642B3A6C5C002E5737 /* ViewTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTypeModel.swift; sourceTree = "<group>"; };
+		084D83672B3AB81C002E5737 /* menuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			children = (
 				084D835C2B3A5E72002E5737 /* RootView.swift */,
 				0804BBBA2B346670003A484A /* ContentView.swift */,
+				084D83672B3AB81C002E5737 /* menuView.swift */,
 				084D83602B3A6444002E5737 /* FirstPageView.swift */,
 			);
 			path = Views;
@@ -323,6 +326,7 @@
 				0804BBB92B346670003A484A /* Yumemi_internTestApp.swift in Sources */,
 				084D83632B3A67FF002E5737 /* ViewType.swift in Sources */,
 				084D83612B3A6444002E5737 /* FirstPageView.swift in Sources */,
+				084D83682B3AB81D002E5737 /* menuView.swift in Sources */,
 				084D835D2B3A5E72002E5737 /* RootView.swift in Sources */,
 				0804BBC52B346672003A484A /* Yumemi_internTest.xcdatamodeld in Sources */,
 				084D83542B366DA2002E5737 /* APIClient.swift in Sources */,
