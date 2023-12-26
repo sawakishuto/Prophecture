@@ -72,6 +72,12 @@ struct ContentView: View {
                 AsyncImage(url: URL(string: Logo_url))
             }
         }
+        .opacity(self.opacity)
+        .onAppear {
+            withAnimation(.linear(duration: 1.0)) {
+                           self.opacity = 1.0
+                       }
+        }
     }
 
     //    private func addItem() {
