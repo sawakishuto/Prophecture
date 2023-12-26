@@ -109,6 +109,4 @@ struct ContentView: View {
     //    return formatter
     //}()
 }
-#Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-}
+

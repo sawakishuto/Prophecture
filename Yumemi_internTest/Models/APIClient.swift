@@ -49,7 +49,7 @@ struct APIClient {
                 }
 
                 if response.statusCode == 200 {
-                    do{
+                    do {
                         print("⭕️session succeed")
                         let decodedData: APIResponseInfo = try JSONDecoder().decode(APIResponseInfo.self, from: data)
                         return .success(decodedData)

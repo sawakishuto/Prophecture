@@ -12,6 +12,7 @@ final class FortuneViewModel: ObservableObject {
     private let apiClient = APIClient()
 
     func executionFortune(name: String, birthday: YearMonthDay, blood_type: String, today: YearMonthDay) {
+        
         Task {
             let executionResult = await self.apiClient.StartSession(name: name, birthday: birthday, blood_type: blood_type, today: today)
             switch executionResult {
@@ -27,7 +28,9 @@ final class FortuneViewModel: ObservableObject {
                         has_coast_line: fortuneResult.has_coast_line,
                         logo_url: fortuneResult.logo_url,
                         brief: fortuneResult.brief)
+                    
                 }
+
 
 
             case .failure(let APIError):
