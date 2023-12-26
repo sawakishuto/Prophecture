@@ -18,6 +18,8 @@ struct RootView: View {
             ContentView(ViewType: viewTypeModel)
         case .menuPage:
             menuView(ViewType: viewTypeModel)
+        case .mapPage:
+            FortuneMapview(ViewType: viewTypeModel)
         }
     }
 }

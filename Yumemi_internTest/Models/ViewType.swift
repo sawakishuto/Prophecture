@@ -11,4 +11,5 @@ enum ViewType {
     case firstPage
     case tabPage
     case menuPage
+    case mapPage
 }
