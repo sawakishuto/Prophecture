@@ -10,8 +10,11 @@ import SwiftUI
 struct menuView: View {
     let ViewType: ViewTypeModel
     @State private var opacity: Double = 0.0
+    @State private var isShowFortuneAlert: Bool = false
+    @State private var isShowMapAlert: Bool = false
     var body: some View {
         ZStack {
+
             Image("menuImage")
                 .resizable()
                 .scaledToFill()
