@@ -16,6 +16,8 @@ struct RootView: View {
             FirstPageView(ViewType: viewTypeModel)
         case .tabPage:
             ContentView(ViewType: viewTypeModel)
+        case .menuPage:
+            menuView(ViewType: viewTypeModel)
         }
     }
 }

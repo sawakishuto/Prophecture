@@ -66,7 +66,7 @@ struct FirstPageView: View {
                 expandImage.toggle()
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.4) {
-                self.ViewType.viewType = .tabPage
+                self.ViewType.viewType = .menuPage
             }
             }
 
