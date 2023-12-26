@@ -27,7 +27,8 @@ struct menuView: View {
                 Image("menuMessage")
                     .resizable()
                     .scaledToFit()
-                    .scaleEffect(0.9)
+                    .scaleEffect(1.2)
+                    .padding(.leading, 20)
             })
             .padding(.bottom, 450)
             .alert("占いを始めますか？", isPresented: $isShowFortuneAlert) {
@@ -45,15 +46,16 @@ struct menuView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 350)
-                    .padding(.top, 350)
+
             }
-        }
-        .alert("占いマップを見ますか？", isPresented: $isShowMapAlert) {
-            Button("いいえ") {
-                isShowMapAlert = false
-            }
-            Button("はい") {
-                ViewType.viewType = .mapPage
+            .padding(.top, 350)
+            .alert("占いマップを見ますか？", isPresented: $isShowMapAlert) {
+                Button("いいえ") {
+                    isShowMapAlert = false
+                }
+                Button("はい") {
+                    ViewType.viewType = .mapPage
+                }
             }
         }
             .opacity(self.opacity)

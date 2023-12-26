@@ -14,6 +14,3 @@ struct FortuneMapview: View {
     }
 }
 
-#Preview {
-    FortuneMapview()
-}

@@ -22,6 +22,7 @@ struct ContentView: View {
     @State private var returnHas_coast_line: Bool = false
     @State private var returnLogo_url: String? = nil
     @State private var returnBrief: String = ""
+    @State private var opacity: Double = 0.0
     let ViewType: ViewTypeModel
 
     @FetchRequest(
@@ -50,21 +51,22 @@ struct ContentView: View {
                     Calendar.Component.year, Calendar.Component.month, Calendar.Component.day
                 ], from: currentDate)
 
-                ViewModel.executionFortune(name: name,
-                                           birthday: YearMonthDay(
-                                            year: year,
-                                            month: month,
-                                            day: day
-                                           ),
-                                           blood_type: blood_type,
-                                           today: YearMonthDay(
-                                            year: calComponent.year ?? 1995,
-                                            month: calComponent.month ?? 12,
-                                            day: calComponent.day ?? 25
-                                                              )
+                ViewModel.executionFortune(
+                    name: name,
+                    birthday: YearMonthDay(
+                        year: year,
+                        month: month,
+                        day: day
+                    ),
+                    blood_type: blood_type,
+                    today: YearMonthDay(
+                        year: calComponent.year ?? 1995,
+                        month: calComponent.month ?? 12,
+                        day: calComponent.day ?? 25
+                    )
                 )
                 returnLogo_url = ViewModel.fortuneResults.logo_url
-                self.ViewType.viewType = .firstPage
+//                self.ViewType.viewType = .firstPage
             }, label: {
                 Text("送信")
             })
