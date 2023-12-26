@@ -10,10 +10,13 @@ import SwiftUI
 struct FirstPageView: View {
     let ViewType: ViewTypeModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {
+            self.ViewType.viewType = .tabPage
+        }, label: {
+            Text("遷移")
+        })
+
     }
 }
 
-#Preview {
-    FirstPageView()
-}
+

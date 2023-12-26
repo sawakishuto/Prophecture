@@ -64,10 +64,10 @@ struct ContentView: View {
                                                               )
                 )
                 returnLogo_url = ViewModel.fortuneResults.logo_url
+                self.ViewType.viewType = .firstPage
             }, label: {
                 Text("送信")
             })
-
             if let Logo_url = returnLogo_url {
                 AsyncImage(url: URL(string: Logo_url))
             }
