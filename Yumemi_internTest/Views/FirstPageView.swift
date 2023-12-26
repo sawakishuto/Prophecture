@@ -23,6 +23,7 @@ struct FirstPageView: View {
                 .scaledToFill()
                 .ignoresSafeArea()
                 .scaleEffect(expandImage ? 7.0 : 1.3)
+                .padding(.bottom, expandImage ? 1100: 20)
                 .animation(.spring(duration: 2.7), value: expandImage)
 
 
@@ -45,6 +46,7 @@ struct FirstPageView: View {
                 Text("Tap To Start!")
                     .fontWeight(.black)
                     .font(.system(size: 35))
+                    .foregroundStyle(.white)
                     .padding(.top, 300)
                     .scaleEffect(isShowTitle ? 1.0 : 0.8)
                     .animation(.spring(duration: 1.0).repeatForever(), value: bounceMessage)
