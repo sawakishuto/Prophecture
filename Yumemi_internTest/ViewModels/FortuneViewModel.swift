@@ -8,11 +8,13 @@
 import Foundation
 
 final class FortuneViewModel: ObservableObject {
-    @Published var fortuneResults: APIResponseInfo = APIResponseInfo(name: "しゅうと", capital: "滋賀県", citizen_day: MonthDay(month: 11, day: 12), has_coast_line: true, logo_url: nil, brief: "特になし")
+    @Published var fortuneResults: APIResponseInfo?
     private let apiClient = APIClient()
+    init() {
+        self.fortuneResults = nil
+    }
 
     func executionFortune(name: String, birthday: YearMonthDay, blood_type: String, today: YearMonthDay) {
-        
         Task {
             let executionResult = await self.apiClient.StartSession(name: name, birthday: birthday, blood_type: blood_type, today: today)
             switch executionResult {
@@ -20,13 +22,9 @@ final class FortuneViewModel: ObservableObject {
                 await MainActor.run {
                     self.fortuneResults = fortuneResult
                 }
-
-
-
             case .failure(let APIError):
                 print("\(APIError)")
             }
         }
-        print(fortuneResults)
     }
 }
