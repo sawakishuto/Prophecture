@@ -40,6 +40,7 @@ struct ContentView: View {
     @State private var returnLogo_url: String? = nil
     @State private var returnBrief: String = ""
     @State private var opacity: Double = 0.0
+    @State private var imgOffset: Double = 0.0
     let ViewType: ViewTypeModel
 
     @FetchRequest(
@@ -47,78 +48,86 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     var body: some View {
-        VStack {
-            Text("名前を入力してください")
-            TextField("しゅうと", text: $name)
+        ZStack {
+            VStack {
+                Text("名前を入力してください")
+                TextField("しゅうと", text: $name)
 
-            Text("血液型を入力してください")
-            Picker(selection: $blood_type, label: Text("")) {
-                ForEach(Blood_type.allCases) { blood in
-                    Text("\(blood.blood_type)")
+                Text("血液型を入力してください")
+                Picker(selection: $blood_type, label: Text("")) {
+                    ForEach(Blood_type.allCases) { blood in
+                        Text("\(blood.blood_type)")
+                    }
                 }
-            }
-                .pickerStyle(.menu)
-                .padding(.top, 40)
-                Text("生年月日を入力してください")
-                HStack {
-                    Picker(selection: self.$year, label: Text("年")){
-                        ForEach(1950..<2025){ _x in
-                            Text("\(_x)")
-                        }
-                    }
-                    Picker(selection: self.$month, label: Text("月")){
-                        ForEach(1..<12){ _x in
-                            Text("\(_x)")
-                        }
-                    }
-                    Picker(selection: self.$day, label: Text("日")){
-                        if self.month != 1 {
-                            ForEach(1..<32){ _x  in
-                                Text("\(_x)")
-                            }
-                        } else {
-                            ForEach(1..<29){ _x in
+                    .pickerStyle(.menu)
+                    .padding(.top, 40)
+                    Text("生年月日を入力してください")
+                    HStack {
+                        Picker(selection: self.$year, label: Text("年")){
+                            ForEach(1950..<2025){ _x in
                                 Text("\(_x)")
                             }
                         }
+                        Picker(selection: self.$month, label: Text("月")){
+                            ForEach(1..<12){ _x in
+                                Text("\(_x)")
+                            }
+                        }
+                        Picker(selection: self.$day, label: Text("日")){
+                            if self.month != 1 {
+                                ForEach(1..<32){ _x  in
+                                    Text("\(_x)")
+                                }
+                            } else {
+                                ForEach(1..<29){ _x in
+                                    Text("\(_x)")
+                                }
+                            }
+                        }
                     }
-                }
-                Button(action: {
-                    let currentDate: Date = Date()
-                    let calender = Calendar.current
-                    let calComponent = calender.dateComponents([
-                        Calendar.Component.year, Calendar.Component.month, Calendar.Component.day
-                    ], from: currentDate)
+                    Button(action: {
+                        let currentDate: Date = Date()
+                        let calender = Calendar.current
+                        let calComponent = calender.dateComponents([
+                            Calendar.Component.year, Calendar.Component.month, Calendar.Component.day
+                        ], from: currentDate)
 
-                    ViewModel.executionFortune(
-                        name: name,
-                        birthday: YearMonthDay(
-                            year: year + 1950,
-                            month: month + 1,
-                            day: day + 1
-                        ),
-                        blood_type: blood_type.blood_type,
-                        today: YearMonthDay(
-                            year: calComponent.year ?? 1995,
-                            month: calComponent.month ?? 12,
-                            day: calComponent.day ?? 25
+                        ViewModel.executionFortune(
+                            name: name,
+                            birthday: YearMonthDay(
+                                year: year + 1950,
+                                month: month + 1,
+                                day: day + 1
+                            ),
+                            blood_type: blood_type.blood_type,
+                            today: YearMonthDay(
+                                year: calComponent.year ?? 1995,
+                                month: calComponent.month ?? 12,
+                                day: calComponent.day ?? 25
+                            )
                         )
-                    )
-                    returnLogo_url = ViewModel.fortuneResults.logo_url
-                    //                self.ViewType.viewType = .firstPage
-                }, label: {
-                    Text("送信")
-                })
-                if let Logo_url = returnLogo_url {
-                    AsyncImage(url: URL(string: Logo_url))
+
+                        //                self.ViewType.viewType = .firstPage
+                    }, label: {
+                        Text("送信")
+                    })
+                    if ViewModel.fortuneResults?.logo_url != nil {
+                        AsyncImage(url: URL(string: (ViewModel.fortuneResults?.logo_url)!))
+                    }
                 }
-            }
-            .opacity(self.opacity)
-            .onAppear {
-                withAnimation(.linear(duration: 1.0)) {
-                    self.opacity = 1.0
-                }
-            }
+            .padding(.trailing, 30)
+            Image("kartenImage")
+                .resizable()
+                .offset(x: imgOffset)
+                .scaledToFill()
+                .ignoresSafeArea()
+                .scaleEffect(1.2)
+        }
+        .onAppear {
+            withAnimation(.easeInOut(duration: 0.7)) {
+                   self.imgOffset = -UIScreen.main.bounds.width * 2
+                 }
+        }
         }
 
         //    private func addItem() {
