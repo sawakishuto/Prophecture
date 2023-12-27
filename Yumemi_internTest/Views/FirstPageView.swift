@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
-
+import AVFoundation
 struct FirstPageView: View {
-    let ViewType: ViewTypeModel
     @State private var isShowComment: Bool = false
     @State private var isShowTitle: Bool = false
     @State private var bounceMessage: Bool = false
     @State private var expandImage: Bool = false
     @State private var isClose: Bool = true
+    private let DoorOpenMusic = try! AVAudioPlayer(data: NSDataAsset(name: "doorOpenMusic")!.data)
+    private let WalkMusic = try! AVAudioPlayer(data: NSDataAsset(name: "walkMusic")!.data)
+
+    let ViewType: ViewTypeModel
 
     var body: some View {
 
@@ -64,6 +67,8 @@ struct FirstPageView: View {
             isClose.toggle()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 expandImage.toggle()
+                DoorOpenMusic.play()
+                WalkMusic.play()
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.4) {
                 self.ViewType.viewType = .menuPage

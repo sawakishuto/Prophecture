@@ -6,9 +6,14 @@
 //
 
 import SwiftUI
-
+import AVFoundation
 struct RootView: View {
+    private let AppMusic = try! AVAudioPlayer(data: NSDataAsset(name: "appMusic")!.data)
     @StateObject var viewTypeModel = ViewTypeModel()
+    init() {
+        AppMusic.numberOfLoops = -1
+        AppMusic.play()
+    }
 
     var body: some View {
         switch viewTypeModel.viewType {
