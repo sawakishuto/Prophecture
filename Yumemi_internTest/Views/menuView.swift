@@ -20,7 +20,7 @@ struct menuView: View {
         ZStack {
             menus
                 .padding(.trailing, 30)
-
+            
             Image("kartenImage")
                 .resizable()
                 .scaledToFill()
@@ -31,71 +31,71 @@ struct menuView: View {
     }
 }
 private extension menuView {
-        var menus: some View {
-            ZStack {
-
-                Image("menuImage")
+    var menus: some View {
+        ZStack {
+            
+            Image("menuImage")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+                .scaleEffect(1.01)
+            
+            Button(action: {
+                isShowFortuneAlert = true
+                TapMusic.play()
+            }, label: {
+                Image("menuMessage")
                     .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-                    .scaleEffect(1.01)
-
-                Button(action: {
-                    isShowFortuneAlert = true
+                    .scaledToFit()
+                    .scaleEffect(1.2)
+                    .padding(.leading, 20)
+            })
+            .padding(.bottom, 450)
+            .alert("占いを始めますか？", isPresented: $isShowFortuneAlert) {
+                Button("いいえ") {
+                    CancelMusic.play()
+                    isShowFortuneAlert = false
+                    
+                    
+                }
+                Button("はい") {
+                    withAnimation(.easeInOut(duration: 1.0)) {
+                        self.imgOffset = 0.0
+                    }
                     TapMusic.play()
-                }, label: {
-                    Image("menuMessage")
-                        .resizable()
-                        .scaledToFit()
-                        .scaleEffect(1.2)
-                        .padding(.leading, 20)
-                })
-                .padding(.bottom, 450)
-                .alert("占いを始めますか？", isPresented: $isShowFortuneAlert) {
-                    Button("いいえ") {
-                        CancelMusic.play()
-                        isShowFortuneAlert = false
-
-
-                    }
-                    Button("はい") {
-                        withAnimation(.easeInOut(duration: 1.0)) {
-                            self.imgOffset = 0.0
-                             }
-                        TapMusic.play()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                            self.ViewType.viewType = .tabPage
-                        }
-                    }
-                }
-                Button {
-                    isShowMapAlert = true
-                } label: {
-                    Image("fortuneMapImage")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 350)
-
-                }
-                .padding(.top, 350)
-                .alert("占いマップを見ますか？", isPresented: $isShowMapAlert) {
-                    Button("いいえ") {
-                        withAnimation{
-                        isShowMapAlert = false}
-                    }
-                    Button("はい") {
-                        ViewType.viewType = .mapPage
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        self.ViewType.viewType = .tabPage
                     }
                 }
             }
-                .opacity(self.opacity)
-                .onTapGesture {
-                    TapMusic.play()
+            Button {
+                isShowMapAlert = true
+            } label: {
+                Image("fortuneMapImage")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 350)
+                
+            }
+            .padding(.top, 350)
+            .alert("占いマップを見ますか？", isPresented: $isShowMapAlert) {
+                Button("いいえ") {
+                    withAnimation{
+                        isShowMapAlert = false}
                 }
-                .onAppear {
-                    withAnimation(.linear(duration: 1.0)) {
-                                   self.opacity = 1.0
-                               }
+                Button("はい") {
+                    ViewType.viewType = .mapPage
                 }
+            }
+        }
+        .opacity(self.opacity)
+        .onTapGesture {
+            TapMusic.play()
+        }
+        .onAppear {
+            withAnimation(.linear(duration: 1.0)) {
+                self.opacity = 1.0
+            }
         }
     }
+}
