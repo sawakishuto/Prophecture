@@ -7,8 +7,9 @@
 
 import SwiftUI
 import CoreData
-
+import AVFoundation
 struct ContentView: View {
+
     enum Blood_type: String, CaseIterable, Identifiable {
         case a
         case b
@@ -33,14 +34,12 @@ struct ContentView: View {
     @State private var month: Int = 0
     @State private var day: Int = 0
     @State private var blood_type: Blood_type = .a
-    @State private var returnName: String = ""
-    @State private var returnCapital: String = ""
-    @State private var returnCitizen_day: MonthDay = MonthDay(month: 12, day: 25)
-    @State private var returnHas_coast_line: Bool = false
-    @State private var returnLogo_url: String? = nil
-    @State private var returnBrief: String = ""
     @State private var opacity: Double = 0.0
     @State private var imgOffset: Double = 0.0
+    @State private var slideOffset: Double = 0.0
+    @State private var goUpSlide: Bool = false
+    @State private var isResult: Bool = false
+    private let PaperMusic = try! AVAudioPlayer(data: NSDataAsset(name: "submitPaperMusic")!.data)
     let ViewType: ViewTypeModel
 
     @FetchRequest(
