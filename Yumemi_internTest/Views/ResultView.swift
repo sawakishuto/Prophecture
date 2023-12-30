@@ -23,11 +23,30 @@ struct ResultView: View {
     @State private var isSmallEffect: Bool = false
     @State private var islargeEffect: Bool = false
 
+
+    let ViewType: ViewTypeModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            CardBack()
+                .offset(y: isappearA ? -150: -2000)
+
+           CardBack()
+                .offset(y: isappearB ? 150: -2000)
+
+        }
+        .animation(.easeInOut(duration: 0.7), value: isappearA)
+        .animation(.easeInOut(duration: 0.7), value: isappearB)
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                CardAppear.play()
+                isappearA = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+                CardAppear.play()
+                isappearB = true
+
+            }
+        }
     }
 }
 
-#Preview {
-    ResultView()
-}
