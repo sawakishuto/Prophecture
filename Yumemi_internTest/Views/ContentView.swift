@@ -27,6 +27,7 @@ struct ContentView: View {
             self
         }
     }
+    
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var ViewModel = FortuneViewModel()
     @State private var name: String = ""
@@ -91,6 +92,14 @@ struct ContentView: View {
                     self.imgOffset = -UIScreen.main.bounds.width * 2
                 }
         }
+            .background(alignment: .center) {
+                Image("tableImage")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+            }
         } else {
             ResultView(
                 returnName: self.ViewModel.fortuneResults?.name ?? "滋賀県",
