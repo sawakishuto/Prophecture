@@ -10,6 +10,7 @@ import AVFoundation
 struct RootView: View {
     private let AppMusic = try! AVAudioPlayer(data: NSDataAsset(name: "appMusic")!.data)
     @StateObject var viewTypeModel = ViewTypeModel()
+    @StateObject var viewModel = FortuneViewModel()
     init() {
         AppMusic.numberOfLoops = -1
         AppMusic.play()
@@ -20,7 +21,7 @@ struct RootView: View {
         case .firstPage:
             FirstPageView(ViewType: viewTypeModel)
         case .tabPage:
-            ContentView(ViewType: viewTypeModel)
+            ContentView(ViewType: viewTypeModel, viewModel: viewModel)
         case .menuPage:
             menuView(ViewType: viewTypeModel)
         case .mapPage:
