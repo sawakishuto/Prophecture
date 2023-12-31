@@ -30,6 +30,7 @@ struct ContentView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var ViewModel = FortuneViewModel()
+    @State private var message: String = ""
     @State private var name: String = ""
     @State private var year: Int = 0000
     @State private var month: Int = 0
@@ -42,6 +43,7 @@ struct ContentView: View {
     @State private var isResult: Bool = false
     private let PaperMusic = try! AVAudioPlayer(data: NSDataAsset(name: "submitPaperMusic")!.data)
     let ViewType: ViewTypeModel
+    let viewModel: FortuneViewModel
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
