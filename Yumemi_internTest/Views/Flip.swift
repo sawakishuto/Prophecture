@@ -29,6 +29,8 @@ struct Flip<Front: View, Back: View>: View {
         ZStack {
             if self.canShowFrontView {
                 front()
+                    .background(.white)
+                    .cornerRadius(20)
             }
             else {
                 back()
