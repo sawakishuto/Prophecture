@@ -51,33 +51,44 @@ struct ContentView: View {
         if !isResult {
             ZStack {
                 mainView
-                .onChange(of: slideOffset) { newValue in
-                    if newValue > -400 {
-                        withAnimation(.easeInOut(duration: 0.7)) {
-                            self.slideOffset = -1000
-                            PaperMusic.play()
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                            ViewModel.executionFortune(
-                                name: name,
-                                birthday: YearMonthDay(
-                                    year: year + 1950,
-                                    month: month + 1,
-                                    day: day + 1
-                                ),
-                                blood_type: blood_type.blood_type,
-                                today: YearMonthDay(
-                                    year: getCurrentTime().year ?? 1995,
-                                    month: getCurrentTime().month ?? 12,
-                                    day: getCurrentTime().day ?? 25
-                                )
-                            )
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                            isResult = true
+                    .onChange(of: slideOffset) { newValue in
+                        if newValue > -400 {
+                            if name.isEmpty {
+                                message = "名前を入力してください"
+                            } else {
+                                withAnimation(.easeInOut(duration: 0.7)) {
+                                    self.slideOffset = -1000
+                                    PaperMusic.play()
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    ViewModel.executionFortune(
+                                        name: name,
+                                        birthday: YearMonthDay(
+                                            year: year + 1950,
+                                            month: month + 1,
+                                            day: day + 1
+                                        ),
+                                        blood_type: blood_type.blood_type,
+                                        today: YearMonthDay(
+                                            year: getCurrentTime().year ?? 1995,
+                                            month: getCurrentTime().month ?? 12,
+                                            day: getCurrentTime().day ?? 25
+                                        )
+                                    )
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                    isResult = true
+                                }
+                            }
                         }
                     }
-                }
+                Image("swipeImage")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100)
+                    .padding(.top, 600)
+                  
+
                 Image("kartenImage")
                     .resizable()
                     .scaleEffect(1.2)
@@ -122,11 +133,17 @@ private extension ContentView {
                 .scaledToFit()
                 .padding(.leading, 40)
 
-            TextField("田中太郎", text: $name)
-                .frame(width: 150, height: 35, alignment: .center)
-                .background(.white)
-                .cornerRadius(10)
-                .padding(.bottom, 250)
+            VStack {
+                TextField("田中太郎", text: $name)
+                    .frame(width: 150, height: 35, alignment: .center)
+                    .background(.white)
+                    .cornerRadius(10)
+                    .padding(.bottom, 250)
+                Text(message)
+                    .foregroundStyle(.red)
+                    .fontWeight(.black)
+                    .padding(.leading, 30)
+            }
 
             Picker(selection: $blood_type, label: Text("")) {
                 ForEach(Blood_type.allCases) { blood in
