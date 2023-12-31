@@ -61,65 +61,94 @@ struct ResultView: View {
     @State private var downCardZ_Index: Double = 10
     @State private var upCardOffset: CGFloat = -2000
     @State private var downCardOffset: CGFloat = -2000
+    @State private var goOpenCard: Bool = false
     @State private var cardStates: cardState = .normal
     let ViewType: ViewTypeModel
     
     var body: some View {
-        GeometryReader { geometory in
+        if !goOpenCard {
+            GeometryReader { geometory in
 
-            ZStack(alignment: .center) {
-                Image("tableImage")
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-                    .frame(width: geometory.size.width, height: geometory.size.height)
-                VStack(alignment: .center, spacing: 150) {
-                    Image("cardImage")
+                ZStack(alignment: .center) {
+                    Image("tableImage")
                         .resizable()
-                        .scaledToFit()
-                        .frame(width: 200)
-                        .scaleEffect(cardStates.UpcardSituation)
-                        .offset(y: upCardOffset + cardStates.upCardPlusOffset)
-                        .zIndex(upCardZ_Index)
-                        .onTapGesture {
-                            cardStates = .large
-                            downCardZ_Index = 9
-                            upCardZ_Index = 10
-                        }
+                        .scaledToFill()
+                        .ignoresSafeArea()
+                        .frame(width: geometory.size.width, height: geometory.size.height)
+                    VStack(alignment: .center, spacing: 150) {
+                        upCardView
+                        downCardView
+                    }
+                    if cardStates != .normal {
+                        Text("このカードにしますか")
+                            .onTapGesture {
+                                goOpenCard = true
+                            }
+                            .padding(.top, 500)
+                            .foregroundColor(.white)
+                            .fontWeight(.black)
+                    }
 
-                    Image("cardImage")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 200)
-                        .scaleEffect(cardStates.downcardSituation)
-                        .offset(y: downCardOffset + cardStates.downCardPlusOffset)
-                        .zIndex(downCardZ_Index)
-                        .onTapGesture {
-                            cardStates = .small
-                            upCardZ_Index = 9
-                            downCardZ_Index = 10
-                        }
+                }
+                .onTapGesture {
+                    cardStates = .normal
+                }
+                .animation(.easeInOut(duration: 0.7), value: upCardOffset)
+                .animation(.easeInOut(duration: 0.7), value: downCardOffset)
+                .animation(.easeInOut(duration: 0.3), value: cardStates)
+                .animation(.easeInOut(duration: 0.3), value: cardStates)
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    CardAppear.play()
+                    upCardOffset = 0
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+                    CardAppear.play()
+                    isappearB = true
+                    downCardOffset = 0
                 }
             }
+        } else {
+            OpenCardPageView(
+                returnName: returnName,
+                returnCapital: returnCapital,
+                returnCitizen_day: returnCitizen_day,
+                returnHas_coast_line: returnHas_coast_line,
+                returnLogo_url: returnLogo_url,
+                returnBrief: returnBrief,
+                ViewType: ViewType)
+        }
+    }
+}
+private extension ResultView {
+    var upCardView: some View {
+        Image("cardImage")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 200)
+            .scaleEffect(cardStates.UpcardSituation)
+            .offset(y: upCardOffset + cardStates.upCardPlusOffset)
+            .zIndex(upCardZ_Index)
             .onTapGesture {
-                cardStates = .normal
+                cardStates = .large
+                downCardZ_Index = 9
+                upCardZ_Index = 10
             }
-            .animation(.easeInOut(duration: 0.7), value: upCardOffset)
-            .animation(.easeInOut(duration: 0.7), value: downCardOffset)
-            .animation(.easeInOut(duration: 0.3), value: cardStates)
-            .animation(.easeInOut(duration: 0.3), value: cardStates)
-        }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                CardAppear.play()
-               upCardOffset = 0
+    }
+    var downCardView: some View {
+        Image("cardImage")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 200)
+            .scaleEffect(cardStates.downcardSituation)
+            .offset(y: downCardOffset + cardStates.downCardPlusOffset)
+            .zIndex(downCardZ_Index)
+            .onTapGesture {
+                cardStates = .small
+                upCardZ_Index = 9
+                downCardZ_Index = 10
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
-                CardAppear.play()
-                isappearB = true
-                downCardOffset = 0
-            }
-        }
     }
 }
 
