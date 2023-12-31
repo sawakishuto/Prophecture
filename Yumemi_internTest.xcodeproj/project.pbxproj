@@ -29,7 +29,6 @@
 		084D83682B3AB81D002E5737 /* menuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084D83672B3AB81C002E5737 /* menuView.swift */; };
 		087E018D2B3BF88000F0DAB4 /* CardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E018C2B3BF88000F0DAB4 /* CardFront.swift */; };
 		087E018F2B3C04D200F0DAB4 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E018E2B3C04D200F0DAB4 /* ResultView.swift */; };
-		087E01912B3D1BC300F0DAB4 /* CardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E01902B3D1BC300F0DAB4 /* CardBack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +74,6 @@
 		084D83672B3AB81C002E5737 /* menuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuView.swift; sourceTree = "<group>"; };
 		087E018C2B3BF88000F0DAB4 /* CardFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFront.swift; sourceTree = "<group>"; };
 		087E018E2B3C04D200F0DAB4 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
-		087E01902B3D1BC300F0DAB4 /* CardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +192,6 @@
 				0810E79E2B3ACD86008AC4FD /* FortuneMapview.swift */,
 				084D83602B3A6444002E5737 /* FirstPageView.swift */,
 				087E018C2B3BF88000F0DAB4 /* CardFront.swift */,
-				087E01902B3D1BC300F0DAB4 /* CardBack.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -333,7 +330,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				087E01912B3D1BC300F0DAB4 /* CardBack.swift in Sources */,
 				084D835A2B36B14E002E5737 /* FortuneViewModel.swift in Sources */,
 				08025FC92B3BC17E00810169 /* Flip.swift in Sources */,
 				084D83472B36552E002E5737 /* Model.swift in Sources */,
