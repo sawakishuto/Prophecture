@@ -15,8 +15,22 @@ struct OpenCardPageView: View {
     let returnLogo_url: String?
     let returnBrief: String
     let ViewType: ViewTypeModel
+
     var body: some View {
-      CardFront(returnName: returnName, returnCapital: returnCapital, returnCitizen_day: returnCitizen_day, returnHas_coast_line: returnHas_coast_line, returnLogo_url: returnLogo_url, returnBrief: returnBrief)
+            ZStack {
+                Image("backgroundImage")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                    .scaleEffect(1.01)
+                Text("あなたにぴったりの都道府県は・・")
+                    .padding(.bottom, 550)
+                    .fontWeight(.black)
+                    .font(.system(size: 30))
+                    .foregroundStyle(.white)
+                CardFront(returnName: returnName, returnCapital: returnCapital, returnCitizen_day: returnCitizen_day, returnHas_coast_line: returnHas_coast_line, returnLogo_url: returnLogo_url, returnBrief: returnBrief)
+
+            }
     }
 }
 
