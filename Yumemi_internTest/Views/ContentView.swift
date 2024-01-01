@@ -84,7 +84,7 @@ struct ContentView: View {
                             }
                         }
                     }
-                Image("fingerImage")
+                Image("swipeImage")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 100)
