@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct CardFront: View {
+    @State private var fingerMove: Bool = false
     @State private var isSmallEffect: Bool = false
     @State private var islargeEffect: Bool = false
+    @State private var returnimage: UIImage? = nil
     @State var isFront: Bool = false
     let returnName: String
     let returnCapital: String
@@ -17,6 +19,8 @@ struct CardFront: View {
     let returnHas_coast_line: Bool
     let returnLogo_url: String?
     let returnBrief: String
+
+
     var body: some View {
         Flip(isFront: isFront, // 先に作っておいた変数 isFront
              front: {
@@ -90,16 +94,42 @@ struct CardFront: View {
             }
         },
              back: {
-            Image("cardImage")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 300)
-                .onTapGesture {
-                    isFront = true
+            ZStack {
+                Image("cardImage")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300)
+
+                    Image("fingerImage")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80)
+                        .scaleEffect(fingerMove ? 0.9: 1)
+                        .rotationEffect(Angle(degrees: 25))
+                        .animation(.spring(duration: 0.4).repeatForever(), value: fingerMove)
+            }
+            .task {
+                returnimage = await loadImage()
+            }
+            .onTapGesture {
+                isFront = true
+            }
+            .onAppear {
+                    withAnimation {
+                        fingerMove.toggle()
+                    }
                 }
         }
         )
 
+
+    }
+    func loadImage() async -> UIImage? {
+      guard let url = URL(string: returnLogo_url ?? "") else { return nil}
+
+        guard let data = try? await URLSession.shared.data(from: url).0 else { return nil }
+        let image = UIImage(data: data)
+        return image
 
     }
 }
