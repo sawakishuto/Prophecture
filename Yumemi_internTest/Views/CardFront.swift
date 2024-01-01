@@ -22,24 +22,57 @@ struct CardFront: View {
              front: {
             ZStack{
                 VStack {
+                    if let returnimage = returnimage {
+                       Image(uiImage: returnimage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 180)
+                    }
+
+
+                    Rectangle()
+                        .fill(.gray)
+                        .frame(width:300, height: 2)
+
                     Text(returnName)
+                        .font(.title2)
+                        .fontWeight(.bold)
                     Text(returnCapital)
-                    if (returnHas_coast_line) {
-                        Text("海岸沿い：ある")
+                        .font(.subheadline)
+                        .fontWeight(.light)
+                    returnHas_coast_line ?
+                        Text("海岸沿い：あり")
+                            .font(.subheadline)
+                            .fontWeight(.thin) :
+                        Text("海岸：なし")
+                            .font(.subheadline)
+                            .fontWeight(.thin)
+                    HStack {
+                        Text("県民の日:")
+                            .font(.subheadline)
+                            .fontWeight(.thin)
+                        if returnCitizen_day.day * returnCitizen_day.month == 0 {
+                            Text("なし")
+                                .font(.subheadline)
+                                .fontWeight(.thin)
+                        } else {
+                            Text("\(returnCitizen_day.month)月\(returnCitizen_day.day)日")
+                                .font(.subheadline)
+                                .fontWeight(.thin)
+                        }
                     }
-                    Text(String(returnCitizen_day.month))
-                    Text(String(returnCitizen_day.day))
-                    AsyncImage(url: URL(string: returnLogo_url ?? "")) { image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 60)
-                            .cornerRadius(40)
-                            .border(.black)
-                    } placeholder: {
-                        ProgressView()
+
+                    ScrollView {
+                        Text(returnBrief)
+                            .font(.caption2)
+                            .fontWeight(.thin)
+                            .foregroundStyle(.black)
+                            .frame(width: 230)
+                            .padding(.bottom, 20)
                     }
+
                 }
+                .padding(.top, 30)
             }
             .backgroundStyle(.white)
             .frame(width: 300,height: 420)
