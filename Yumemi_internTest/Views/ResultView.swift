@@ -84,6 +84,7 @@ struct ResultView: View {
                         Text("このカードにする！")
                             .padding(20)
                             .background(Color.white.cornerRadius(20))
+                            .shadow(radius: 50)
                             .onTapGesture {
                                 goOpenCard = true
                             }
