@@ -74,18 +74,20 @@ struct ResultView: View {
                         .resizable()
                         .scaledToFill()
                         .ignoresSafeArea()
+                        .scaleEffect(1.01)
                         .frame(width: geometory.size.width, height: geometory.size.height)
                     VStack(alignment: .center, spacing: 150) {
                         upCardView
                         downCardView
                     }
                     if cardStates != .normal {
-                        Text("このカードにしますか")
+                        Text("このカードにする！")
+                            .padding(20)
+                            .background(Color.white.cornerRadius(20))
                             .onTapGesture {
                                 goOpenCard = true
                             }
                             .padding(.top, 500)
-                            .foregroundColor(.white)
                             .fontWeight(.black)
                     }
 
