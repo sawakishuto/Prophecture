@@ -13,6 +13,7 @@ struct CardFront: View {
     @State private var islargeEffect: Bool = false
     @State private var returnimage: UIImage? = nil
     @State var isFront: Bool = false
+    @Binding var isShowDetail: Bool
     let returnName: String
     let returnCapital: String
     let returnCitizen_day: MonthDay
@@ -89,9 +90,6 @@ struct CardFront: View {
                     ), lineWidth: 10
                 )
                             )
-            .onTapGesture {
-                isFront = false
-            }
         },
              back: {
             ZStack {
@@ -112,6 +110,7 @@ struct CardFront: View {
                 returnimage = await loadImage()
             }
             .onTapGesture {
+                isShowDetail = true
                 isFront = true
             }
             .onAppear {
@@ -135,5 +134,5 @@ struct CardFront: View {
 }
 
 #Preview {
-    CardFront(returnName: "滋賀県", returnCapital: "大津", returnCitizen_day: MonthDay(month: 11, day: 11), returnHas_coast_line: false, returnLogo_url: "", returnBrief: "特になし")
+    CardFront(isShowDetail: .constant(false), returnName: "滋賀県", returnCapital: "大津", returnCitizen_day: MonthDay(month: 11, day: 11), returnHas_coast_line: false, returnLogo_url: "", returnBrief: "特になし")
 }

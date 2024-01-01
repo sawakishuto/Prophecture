@@ -63,6 +63,7 @@ struct ResultView: View {
     @State private var downCardOffset: CGFloat = -2000
     @State private var goOpenCard: Bool = false
     @State private var cardStates: cardState = .normal
+    @State var isShowDetail: Bool = false
     let ViewType: ViewTypeModel
     
     var body: some View {
@@ -114,7 +115,7 @@ struct ResultView: View {
             }
         } else {
             OpenCardPageView(
-                returnName: returnName,
+                isShowDetail: $isShowDetail, returnName: returnName,
                 returnCapital: returnCapital,
                 returnCitizen_day: returnCitizen_day,
                 returnHas_coast_line: returnHas_coast_line,
