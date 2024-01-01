@@ -84,7 +84,7 @@ struct ContentView: View {
                             }
                         }
                     }
-                Image("swipeImage")
+                Image("fingerImage")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 100)
@@ -110,6 +110,7 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
+                    .scaleEffect(1.01)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
 
             }
@@ -117,7 +118,7 @@ struct ContentView: View {
             ResultView(
                 returnName: self.ViewModel.fortuneResults?.name ?? "滋賀県",
                 returnCapital: self.ViewModel.fortuneResults?.capital ?? "大津市",
-                returnCitizen_day: self.ViewModel.fortuneResults?.citizen_day ?? MonthDay(month: 11, day: 11),
+                returnCitizen_day: self.ViewModel.fortuneResults?.citizen_day ?? MonthDay(month: 0, day: 0),
                 returnHas_coast_line: self.ViewModel.fortuneResults?.has_coast_line ?? false,
                 returnLogo_url: self.ViewModel.fortuneResults?.logo_url,
                 returnBrief: self.ViewModel.fortuneResults?.brief ?? "特になし",
@@ -141,6 +142,7 @@ private extension ContentView {
                     .background(.white)
                     .cornerRadius(10)
                     .padding(.bottom, 250)
+                    .padding(.leading, 30)
                 Text(message)
                     .foregroundStyle(.red)
                     .fontWeight(.black)
