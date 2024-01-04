@@ -9,10 +9,11 @@ import Foundation
 import CoreData
 
  struct CoreDataModel {
-     func addData(name: String, prefecture: String, context: NSManagedObjectContext) {
+     func addData(name: String, prefecture: String, logoUrl: String, context: NSManagedObjectContext) {
         let newItem = Item(context: context)
         newItem.name = name
         newItem.timestamp = Date()
+         newItem.logourl = logoUrl
         newItem.prefecture = prefecture
         do {
             print("保存中")

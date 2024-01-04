@@ -39,6 +39,7 @@ struct ItemData: Identifiable {
     var id: String = UUID().uuidString
     let name: String
     let timeStamp: Date
+    let logo_url: String
     var dateString: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy年M月d日　H時m分"

@@ -100,6 +100,7 @@ struct ResultView: View {
                             .background(Color.white.cornerRadius(20))
                             .shadow(radius: 50)
                             .onTapGesture {
+                                coreDataVM.saveData(name: userName, prefecture: returnName, logoUrl: returnLogo_url ?? "Unknown", context: context)
                                 goOpenCard = true
                             }
                             .padding(.top, 500)
@@ -117,7 +118,7 @@ struct ResultView: View {
                 .animation(.easeInOut(duration: 0.3), value: isShowMessage)
             }
             .onAppear {
-                coreDataVM.saveData(name: userName, prefecture: returnName, context: context)
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                     CardAppear.play()
                     upCardOffset = 0
@@ -130,6 +131,7 @@ struct ResultView: View {
                 }
             }
         } else {
+            
             OpenCardPageView(
                 isShowDetail: $isShowDetail, returnName: returnName,
                 returnCapital: returnCapital,

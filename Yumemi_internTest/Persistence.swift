@@ -18,6 +18,7 @@ struct PersistenceController {
             newItem.timestamp = Date()
             newItem.name = "Unknown"
             newItem.prefecture = "Unknown"
+            newItem.logourl = "Unknown"
         }
         do {
             try viewContext.save()

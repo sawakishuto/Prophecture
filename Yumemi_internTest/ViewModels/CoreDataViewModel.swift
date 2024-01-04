@@ -14,8 +14,8 @@ final class CoreDataViewModel: ObservableObject {
     }
     @Published var fortuneData: [ItemData] = []
 
-    func saveData(name: String, prefecture: String, context: NSManagedObjectContext) {
-        coreDataModel.addData(name: name, prefecture: prefecture, context: context)
+    func saveData(name: String, prefecture: String, logoUrl: String, context: NSManagedObjectContext) {
+        coreDataModel.addData(name: name, prefecture: prefecture, logoUrl: logoUrl, context: context)
     }
     func fetchData(context: NSManagedObjectContext) {
         print("start")
@@ -26,6 +26,7 @@ final class CoreDataViewModel: ObservableObject {
                 var ItemDatas = ItemData(
                     name: data.name ?? "Unknown",
                     timeStamp: data.timestamp ?? Date(),
+                    logo_url: data.logourl ?? "Unknown",
                     prefecture: data.prefecture ?? "Unknown"
                 )
                 fortuneData.append(ItemDatas)
