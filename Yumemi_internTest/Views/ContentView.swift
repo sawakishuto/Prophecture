@@ -30,6 +30,7 @@ struct ContentView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var ViewModel = FortuneViewModel()
+    @State private var isShowSwipe: Bool = false
     @State private var message: String = ""
     @State private var name: String = ""
     @State private var year: Int = 0000
@@ -61,6 +62,7 @@ struct ContentView: View {
                                 withAnimation(.easeInOut(duration: 0.7)) {
                                     self.slideOffset = -1000
                                     PaperMusic.play()
+                                    isShowSwipe = true
                                 }
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                     ViewModel.executionFortune(
@@ -77,6 +79,7 @@ struct ContentView: View {
                                             day: getCurrentTime().day ?? 25
                                         )
                                     )
+
                                 }
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                                     isResult = true
@@ -84,12 +87,14 @@ struct ContentView: View {
                             }
                         }
                     }
-                Image("swipeImage")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100)
-                    .padding(.top, 600)
-                  
+                if !isShowSwipe {
+                    Image("swipeImage")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100)
+                        .padding(.top, 600)
+
+                }
 
                 Image("kartenImage")
                     .resizable()
@@ -105,6 +110,8 @@ struct ContentView: View {
                     self.imgOffset = -UIScreen.main.bounds.width * 2
                 }
         }
+            .animation(.easeInOut(duration: 0.3), value: isShowSwipe)
+
             .background(alignment: .center) {
                 Image("tableImage")
                     .resizable()

@@ -52,6 +52,7 @@ struct ResultView: View {
     let returnLogo_url: String?
     let returnBrief: String
     private let CardAppear = try! AVAudioPlayer(data: NSDataAsset(name: "cardApear")!.data)
+    @State private var isShowMessage: Bool = false
     @State private var appearOffset: Double = 0.0
     @State private var isappearA: Bool = false
     @State private var isappearB: Bool = false
@@ -77,9 +78,17 @@ struct ResultView: View {
                         .ignoresSafeArea()
                         .scaleEffect(1.01)
                         .frame(width: geometory.size.width, height: geometory.size.height)
-                    VStack(alignment: .center, spacing: 150) {
+                    VStack(alignment: .center, spacing: 0) {
                         upCardView
+                            .padding(.bottom, 75)
+                    if isShowMessage {
+                            Text("カードを選んでください")
+                                .foregroundStyle(.white)
+                                .font(.title)
+                                .fontWeight(.black)
+                        }
                         downCardView
+                            .padding(.top, 75)
                     }
                     if cardStates != .normal {
                         Text("このカードにする！")
@@ -101,6 +110,7 @@ struct ResultView: View {
                 .animation(.easeInOut(duration: 0.7), value: downCardOffset)
                 .animation(.easeInOut(duration: 0.3), value: cardStates)
                 .animation(.easeInOut(duration: 0.3), value: cardStates)
+                .animation(.easeInOut(duration: 0.3), value: isShowMessage)
             }
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
@@ -111,6 +121,7 @@ struct ResultView: View {
                     CardAppear.play()
                     isappearB = true
                     downCardOffset = 0
+                    isShowMessage = true
                 }
             }
         } else {
@@ -139,6 +150,7 @@ private extension ResultView {
                 downCardZ_Index = 9
                 upCardZ_Index = 10
             }
+
     }
     var downCardView: some View {
         Image("cardImage")
