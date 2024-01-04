@@ -172,8 +172,8 @@
 		084D83522B366CE4002E5737 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				084D83622B3A67FF002E5737 /* ViewType.swift */,
 				084D83462B36552E002E5737 /* Model.swift */,
+				084D83622B3A67FF002E5737 /* ViewType.swift */,
 				08E40A462B46D3AA00DE1C35 /* CoreDataModel.swift */,
 				084D83532B366DA2002E5737 /* APIClient.swift */,
 				084D83572B36AE19002E5737 /* APIClientError.swift */,

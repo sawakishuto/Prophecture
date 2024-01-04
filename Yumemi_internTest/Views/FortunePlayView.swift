@@ -45,6 +45,7 @@ struct FortunePlayView: View {
     private let PaperMusic = try! AVAudioPlayer(data: NSDataAsset(name: "submitPaperMusic")!.data)
     let ViewType: ViewTypeModel
     let viewModel: FortuneViewModel
+    let coreDataModel = CoreDataModel()
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
