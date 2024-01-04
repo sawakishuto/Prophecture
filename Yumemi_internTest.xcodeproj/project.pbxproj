@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		08025FC92B3BC17E00810169 /* Flip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08025FC82B3BC17E00810169 /* Flip.swift */; };
 		0804BBB92B346670003A484A /* Yumemi_internTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0804BBB82B346670003A484A /* Yumemi_internTestApp.swift */; };
-		0804BBBB2B346670003A484A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0804BBBA2B346670003A484A /* ContentView.swift */; };
+		0804BBBB2B346670003A484A /* FortunePlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0804BBBA2B346670003A484A /* FortunePlayView.swift */; };
 		0804BBBD2B346672003A484A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0804BBBC2B346672003A484A /* Assets.xcassets */; };
 		0804BBC02B346672003A484A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0804BBBF2B346672003A484A /* Preview Assets.xcassets */; };
 		0804BBC22B346672003A484A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0804BBC12B346672003A484A /* Persistence.swift */; };
@@ -30,7 +30,9 @@
 		087E018D2B3BF88000F0DAB4 /* CardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E018C2B3BF88000F0DAB4 /* CardFront.swift */; };
 		087E018F2B3C04D200F0DAB4 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E018E2B3C04D200F0DAB4 /* ResultView.swift */; };
 		08964A6A2B4146E800C833F6 /* OpenCardPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08964A692B4146E800C833F6 /* OpenCardPageView.swift */; };
-		08E40A452B43144100DE1C35 /* ShareOnXViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E40A442B43144100DE1C35 /* ShareOnXViewModel.swift */; };
+		08E40A452B43144100DE1C35 /* OpenURLViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E40A442B43144100DE1C35 /* OpenURLViewModel.swift */; };
+		08E40A472B46D3AA00DE1C35 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E40A462B46D3AA00DE1C35 /* CoreDataModel.swift */; };
+		08E40A492B46D3B700DE1C35 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E40A482B46D3B700DE1C35 /* CoreDataViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +56,7 @@
 		08025FC82B3BC17E00810169 /* Flip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flip.swift; sourceTree = "<group>"; };
 		0804BBB52B346670003A484A /* Yumemi_internTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumemi_internTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0804BBB82B346670003A484A /* Yumemi_internTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_internTestApp.swift; sourceTree = "<group>"; };
-		0804BBBA2B346670003A484A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0804BBBA2B346670003A484A /* FortunePlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortunePlayView.swift; sourceTree = "<group>"; };
 		0804BBBC2B346672003A484A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0804BBBF2B346672003A484A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0804BBC12B346672003A484A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -77,7 +79,9 @@
 		087E018C2B3BF88000F0DAB4 /* CardFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFront.swift; sourceTree = "<group>"; };
 		087E018E2B3C04D200F0DAB4 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		08964A692B4146E800C833F6 /* OpenCardPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCardPageView.swift; sourceTree = "<group>"; };
-		08E40A442B43144100DE1C35 /* ShareOnXViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareOnXViewModel.swift; sourceTree = "<group>"; };
+		08E40A442B43144100DE1C35 /* OpenURLViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLViewModel.swift; sourceTree = "<group>"; };
+		08E40A462B46D3AA00DE1C35 /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
+		08E40A482B46D3B700DE1C35 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,7 @@
 			children = (
 				084D83622B3A67FF002E5737 /* ViewType.swift */,
 				084D83462B36552E002E5737 /* Model.swift */,
+				08E40A462B46D3AA00DE1C35 /* CoreDataModel.swift */,
 				084D83532B366DA2002E5737 /* APIClient.swift */,
 				084D83572B36AE19002E5737 /* APIClientError.swift */,
 			);
@@ -181,7 +186,8 @@
 			children = (
 				084D83642B3A6C5C002E5737 /* ViewTypeModel.swift */,
 				084D83592B36B14E002E5737 /* FortuneViewModel.swift */,
-				08E40A442B43144100DE1C35 /* ShareOnXViewModel.swift */,
+				08E40A482B46D3B700DE1C35 /* CoreDataViewModel.swift */,
+				08E40A442B43144100DE1C35 /* OpenURLViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -190,7 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				084D835C2B3A5E72002E5737 /* RootView.swift */,
-				0804BBBA2B346670003A484A /* ContentView.swift */,
+				0804BBBA2B346670003A484A /* FortunePlayView.swift */,
 				087E018E2B3C04D200F0DAB4 /* ResultView.swift */,
 				084D83672B3AB81C002E5737 /* menuView.swift */,
 				08025FC82B3BC17E00810169 /* Flip.swift */,
@@ -341,8 +347,8 @@
 				084D83472B36552E002E5737 /* Model.swift in Sources */,
 				08964A6A2B4146E800C833F6 /* OpenCardPageView.swift in Sources */,
 				0804BBC22B346672003A484A /* Persistence.swift in Sources */,
-				08E40A452B43144100DE1C35 /* ShareOnXViewModel.swift in Sources */,
-				0804BBBB2B346670003A484A /* ContentView.swift in Sources */,
+				08E40A452B43144100DE1C35 /* OpenURLViewModel.swift in Sources */,
+				0804BBBB2B346670003A484A /* FortunePlayView.swift in Sources */,
 				084D83652B3A6C5C002E5737 /* ViewTypeModel.swift in Sources */,
 				0810E79F2B3ACD86008AC4FD /* FortuneMapview.swift in Sources */,
 				0804BBB92B346670003A484A /* Yumemi_internTestApp.swift in Sources */,
@@ -352,8 +358,10 @@
 				084D835D2B3A5E72002E5737 /* RootView.swift in Sources */,
 				0804BBC52B346672003A484A /* Yumemi_internTest.xcdatamodeld in Sources */,
 				087E018F2B3C04D200F0DAB4 /* ResultView.swift in Sources */,
+				08E40A492B46D3B700DE1C35 /* CoreDataViewModel.swift in Sources */,
 				087E018D2B3BF88000F0DAB4 /* CardFront.swift in Sources */,
 				084D83542B366DA2002E5737 /* APIClient.swift in Sources */,
+				08E40A472B46D3AA00DE1C35 /* CoreDataModel.swift in Sources */,
 				084D83582B36AE19002E5737 /* APIClientError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
