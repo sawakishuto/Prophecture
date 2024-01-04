@@ -39,5 +39,10 @@ struct ItemData: Identifiable {
     var id: String = UUID().uuidString
     let name: String
     let timeStamp: Date
+    var dateString: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy年M月d日　H時m分"
+        return formatter.string(from: timeStamp)
+    }
     let prefecture: String
 }
