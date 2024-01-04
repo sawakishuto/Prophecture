@@ -16,4 +16,18 @@ final class OpenURLViewModel: ObservableObject {
         let encodedText = completedText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         if let encodedText = encodedText, let url = URL(string: "https://twitter.com/intent/tweet?text=\(encodedText)") { UIApplication.shared.open(url) }
     }
+    func OpenTravel(prefectureUrl: String) -> String{
+        let urlString = prefectureUrl
+        let startIndex = urlString.index(urlString.startIndex, offsetBy: 41)
+        let endIndex = urlString.index(urlString.endIndex, offsetBy: -4)
+        var sliced = urlString[startIndex..<endIndex]
+        if sliced == "oita" {
+            sliced = "ooita"
+        } else if sliced == "chiba" {
+            sliced = "tiba"
+        }
+        let newURL = "https://kanko.travel.rakuten.co.jp/\(sliced)/"
+        return newURL
+
+    }
 }
