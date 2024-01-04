@@ -21,57 +21,65 @@ struct OpenCardPageView: View {
     let ViewType: ViewTypeModel
 
     var body: some View {
-            ZStack {
-                Image("backgroundImage")
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-                    .scaleEffect(1.01)
-                Text("あなたにぴったりの都道府県は・・")
-                    .padding(.bottom, 550)
-                    .fontWeight(.black)
-                    .font(.system(size: 30))
-                    .foregroundStyle(.white)
-                CardFront(isShowDetail: $isShowDetail, returnName: returnName, returnCapital: returnCapital, returnCitizen_day: returnCitizen_day, returnHas_coast_line: returnHas_coast_line, returnLogo_url: returnLogo_url, returnBrief: returnBrief)
-                if isShowDetail {
-                    Button(action: {
-                        openURL(URL(string: OpenUrlvm.OpenTravel(prefectureUrl: returnLogo_url ?? ""))!)
-                    }, label: {
-                        Text("観光地の情報を見る")
-                            .fontWeight(.black)
-                            .foregroundStyle(.white)
-                            .zIndex(100)
+        ZStack {
+            Image("backgroundImage")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+                .scaleEffect(1.01)
+            Text("あなたにぴったりの都道府県は・・")
+                .padding(.bottom, 550)
+                .fontWeight(.black)
+                .font(.system(size: 30))
+                .foregroundStyle(.white)
 
-
-                    })
-                    .padding(.top, 480)
-                }
-
-                if isShowDetail {
-                    Image("x_logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30)
-                        .padding()
-                        .background(.white)
-                        .cornerRadius(50)
-                        .padding(EdgeInsets(top: 620, leading: 200, bottom: 0, trailing: 0))
-                        .onTapGesture {
-                            self.OpenUrlvm.ShareOnX(name: returnName)
-                        }
-                }
-                if isShowDetail {
-                    Text("メニュー画面へ戻る")
-                        .padding()
-                        .background(Color.white.cornerRadius(20))
+            CardFront(
+                isShowDetail: $isShowDetail,
+                returnName: returnName,
+                returnCapital: returnCapital,
+                returnCitizen_day: returnCitizen_day,
+                returnHas_coast_line: returnHas_coast_line,
+                returnLogo_url: returnLogo_url,
+                returnBrief: returnBrief
+            )
+            
+            if isShowDetail {
+                Button(action: {
+                    openURL(URL(string: OpenUrlvm.OpenTravel(prefectureUrl: returnLogo_url ?? ""))!)
+                }, label: {
+                    Text("観光地の情報を見る")
                         .fontWeight(.black)
-                        .padding(EdgeInsets(top: 620, leading: 0, bottom: 0, trailing: 150))
-                        .onTapGesture {
-                            ViewType.viewType = .menuPage
-                        }
-                }
-
+                        .foregroundStyle(.white)
+                        .zIndex(100)
+                })
+                .padding(.top, 480)
             }
+
+            if isShowDetail {
+                Image("x_logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30)
+                    .padding()
+                    .background(.white)
+                    .cornerRadius(50)
+                    .padding(EdgeInsets(top: 620, leading: 200, bottom: 0, trailing: 0))
+                    .onTapGesture {
+                        self.OpenUrlvm.ShareOnX(name: returnName)
+                    }
+            }
+            if isShowDetail {
+                Text("メニュー画面へ戻る")
+                    .padding()
+                    .background(Color.white.cornerRadius(20))
+                    .fontWeight(.black)
+                    .padding(EdgeInsets(top: 620, leading: 0, bottom: 0, trailing: 150))
+                    .onTapGesture {
+                        ViewType.viewType = .menuPage
+                    }
+            }
+
+        }
     }
 }
 
