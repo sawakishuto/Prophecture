@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		08025FC92B3BC17E00810169 /* Flip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08025FC82B3BC17E00810169 /* Flip.swift */; };
+		08030D742B470E570037CB5A /* Mapstyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08030D732B470E570037CB5A /* Mapstyle.swift */; };
 		0804BBB92B346670003A484A /* Yumemi_internTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0804BBB82B346670003A484A /* Yumemi_internTestApp.swift */; };
 		0804BBBB2B346670003A484A /* FortunePlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0804BBBA2B346670003A484A /* FortunePlayView.swift */; };
 		0804BBBD2B346672003A484A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0804BBBC2B346672003A484A /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		08025FC82B3BC17E00810169 /* Flip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flip.swift; sourceTree = "<group>"; };
+		08030D732B470E570037CB5A /* Mapstyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapstyle.swift; sourceTree = "<group>"; };
 		0804BBB52B346670003A484A /* Yumemi_internTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumemi_internTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0804BBB82B346670003A484A /* Yumemi_internTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_internTestApp.swift; sourceTree = "<group>"; };
 		0804BBBA2B346670003A484A /* FortunePlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortunePlayView.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				084D83672B3AB81C002E5737 /* menuView.swift */,
 				08025FC82B3BC17E00810169 /* Flip.swift */,
 				0810E79E2B3ACD86008AC4FD /* FortuneMapview.swift */,
+				08030D732B470E570037CB5A /* Mapstyle.swift */,
 				08964A692B4146E800C833F6 /* OpenCardPageView.swift */,
 				084D83602B3A6444002E5737 /* FirstPageView.swift */,
 				087E018C2B3BF88000F0DAB4 /* CardFront.swift */,
@@ -346,6 +349,7 @@
 				08025FC92B3BC17E00810169 /* Flip.swift in Sources */,
 				084D83472B36552E002E5737 /* Model.swift in Sources */,
 				08964A6A2B4146E800C833F6 /* OpenCardPageView.swift in Sources */,
+				08030D742B470E570037CB5A /* Mapstyle.swift in Sources */,
 				0804BBC22B346672003A484A /* Persistence.swift in Sources */,
 				08E40A452B43144100DE1C35 /* OpenURLViewModel.swift in Sources */,
 				0804BBBB2B346670003A484A /* FortunePlayView.swift in Sources */,
