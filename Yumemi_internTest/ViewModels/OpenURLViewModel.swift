@@ -25,6 +25,8 @@ final class OpenURLViewModel: ObservableObject {
             sliced = "ooita"
         } else if sliced == "chiba" {
             sliced = "tiba"
+        } else if sliced == "fukui" {
+            sliced = "hukui"
         }
         let newURL = "https://kanko.travel.rakuten.co.jp/\(sliced)/"
         return newURL
