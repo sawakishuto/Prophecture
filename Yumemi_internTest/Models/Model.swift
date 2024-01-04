@@ -35,3 +35,9 @@ struct MonthDay: Codable {
     
 }
 
+struct ItemData: Identifiable {
+    var id: String = UUID().uuidString
+    let name: String
+    let timeStamp: Date
+    let prefecture: String
+}
