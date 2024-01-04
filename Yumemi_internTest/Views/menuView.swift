@@ -69,6 +69,7 @@ private extension menuView {
                 }
             }
             Button {
+                TapMusic.play()
                 isShowMapAlert = true
             } label: {
                 Image("fortuneMapImage")
@@ -84,6 +85,7 @@ private extension menuView {
                         isShowMapAlert = false}
                 }
                 Button("はい") {
+                    TapMusic.play()
                     ViewType.viewType = .mapPage
                 }
             }
