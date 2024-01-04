@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+import CoreData
 
 struct ResultView: View {
     enum cardState {
@@ -43,7 +44,8 @@ struct ResultView: View {
             }
         }
     }
-
+    @Environment(\.managedObjectContext) private var context
+    @ObservedObject var coreDataVM = CoreDataViewModel(coreDataModel: CoreDataModel())
     @ObservedObject var ViewModel = FortuneViewModel()
     let returnName: String
     let returnCapital: String
@@ -51,6 +53,9 @@ struct ResultView: View {
     let returnHas_coast_line: Bool
     let returnLogo_url: String?
     let returnBrief: String
+    let userName: String
+    let ViewType: ViewTypeModel
+
     private let CardAppear = try! AVAudioPlayer(data: NSDataAsset(name: "cardApear")!.data)
     @State private var isShowMessage: Bool = false
     @State private var appearOffset: Double = 0.0
@@ -65,8 +70,7 @@ struct ResultView: View {
     @State private var goOpenCard: Bool = false
     @State private var cardStates: cardState = .normal
     @State var isShowDetail: Bool = false
-    let ViewType: ViewTypeModel
-    
+
     var body: some View {
         if !goOpenCard {
             GeometryReader { geometory in
@@ -113,6 +117,7 @@ struct ResultView: View {
                 .animation(.easeInOut(duration: 0.3), value: isShowMessage)
             }
             .onAppear {
+                coreDataVM.saveData(name: userName, prefecture: returnName, context: context)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                     CardAppear.play()
                     upCardOffset = 0

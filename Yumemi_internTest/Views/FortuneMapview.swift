@@ -9,8 +9,24 @@ import SwiftUI
 
 struct FortuneMapview: View {
     let ViewType: ViewTypeModel
+    @Environment(\.managedObjectContext) private var context
+    @ObservedObject var coreDataVM = CoreDataViewModel(coreDataModel: CoreDataModel())
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("何も")
+            ForEach(coreDataVM.fortuneData) { data in
+                VStack {
+                    Text(data.name )
+                    Text(data.dateString)
+                    Text(data.prefecture)
+                }
+            }
+        }
+        .onAppear {
+            print("アピ")
+            coreDataVM.fetchData(context: context)
+        }
+
     }
 }
 
