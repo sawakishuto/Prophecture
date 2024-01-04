@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  FortunePlayView.swift
 //  Yumemi_internTest
 //
 //  Created by 澤木柊斗 on 2023/12/21.
@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 import AVFoundation
-struct ContentView: View {
+struct FortunePlayView: View {
 
     enum Blood_type: String, CaseIterable, Identifiable {
         case a
@@ -129,13 +129,14 @@ struct ContentView: View {
                 returnHas_coast_line: self.ViewModel.fortuneResults?.has_coast_line ?? false,
                 returnLogo_url: self.ViewModel.fortuneResults?.logo_url,
                 returnBrief: self.ViewModel.fortuneResults?.brief ?? "特になし",
+                userName: name,
                 ViewType: ViewType
             )
         }
     }
 }
 
-private extension ContentView {
+private extension FortunePlayView {
     var mainView: some View {
         ZStack {
             Image("karteImage")
@@ -215,46 +216,3 @@ private extension ContentView {
         return calComponent
     }
 }
-
-
-
-
-
-
-
-
-//    private func addItem() {
-//        withAnimation {
-//            let newItem = Item(context: viewContext)
-//            newItem.timestamp = Date()
-//
-//            do {
-//                try viewContext.save()
-//            } catch {
-//                let nsError = error as NSError
-//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//            }
-//        }
-//    }
-
-//    private func deleteItems(offsets: IndexSet) {
-//        withAnimation {
-//            offsets.map { items[$0] }.forEach(viewContext.delete)
-//
-//            do {
-//                try viewContext.save()
-//            } catch {
-//                let nsError = error as NSError
-//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//            }
-//        }
-//    }
-//}
-
-//private let itemFormatter: DateFormatter = {
-//    let formatter = DateFormatter()
-//    formatter.dateStyle = .short
-//    formatter.timeStyle = .medium
-//    return formatter
-//}()
-

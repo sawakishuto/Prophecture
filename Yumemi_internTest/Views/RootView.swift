@@ -21,7 +21,7 @@ struct RootView: View {
         case .firstPage:
             FirstPageView(ViewType: viewTypeModel)
         case .tabPage:
-            ContentView(ViewType: viewTypeModel, viewModel: viewModel)
+            FortunePlayView(ViewType: viewTypeModel, viewModel: viewModel)
         case .menuPage:
             menuView(ViewType: viewTypeModel)
         case .mapPage:
