@@ -12,21 +12,39 @@ struct FortuneMapview: View {
     @Environment(\.managedObjectContext) private var context
     @ObservedObject var coreDataVM = CoreDataViewModel(coreDataModel: CoreDataModel())
     var body: some View {
-        VStack {
-            Text("何も")
-            ForEach(coreDataVM.fortuneData) { data in
+      VStack  {
+            ScrollView {
                 VStack {
-                    Text(data.name )
-                    Text(data.dateString)
-                    Text(data.prefecture)
+                    ForEach(coreDataVM.fortuneData) { data in
+                        Mapstyle(logoUrl: data.logo_url, prefecture: data.prefecture, timeStamp: data.dateString, name: data.name)
+                            .padding(.bottom, 30)
+                    }
                 }
-            }
-        }
-        .onAppear {
-            print("アピ")
-            coreDataVM.fetchData(context: context)
-        }
+                .padding(.top, 30)
+                .frame(maxWidth: .infinity)
 
+                .onAppear {
+                    print("アピ")
+                    coreDataVM.fetchData(context: context)
+                }
+
+            }
+            .padding(.top, 50)
+            .frame(height: 550)
+          Text("メニュー画面へ戻る")
+              .padding()
+              .background(Color.white.cornerRadius(20))
+              .fontWeight(.black)
+              .onTapGesture {
+                  ViewType.viewType = .menuPage
+              }
+        }
+      .background {
+          Image("rankingImage")
+              .resizable()
+              .scaledToFill()
+
+      }
     }
 }
 
