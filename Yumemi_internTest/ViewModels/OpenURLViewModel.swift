@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class ShareOnXViewModel: ObservableObject {
+final class OpenURLViewModel: ObservableObject {
     func ShareOnX(name: String) {
         let text = "占いの結果、\(name)が相性がいいらしい！！今度行ってみようかな〜！"
         let hashTag = "#Prophecture\n#都道府県占い\n#占い"
