@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
-
+import AVFoundation
 struct CardFront: View {
+    @State private var isShowHand: Bool = true
     @State private var fingerMove: Bool = false
     @State private var isSmallEffect: Bool = false
     @State private var islargeEffect: Bool = false
     @State private var returnimage: UIImage? = nil
     @State var isFront: Bool = false
     @Binding var isShowDetail: Bool
+    private let resultMusic = try! AVAudioPlayer(data: NSDataAsset(name: "resultMusic")!.data)
     let returnName: String
     let returnCapital: String
     let returnCitizen_day: MonthDay
@@ -90,6 +92,9 @@ struct CardFront: View {
                     ), lineWidth: 10
                 )
                             )
+            .onAppear {
+                resultMusic.play()
+            }
         },
              back: {
             ZStack {
@@ -98,18 +103,21 @@ struct CardFront: View {
                     .scaledToFit()
                     .frame(width: 300)
 
-                    Image("fingerImage")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80)
-                        .scaleEffect(fingerMove ? 0.9: 1)
-                        .rotationEffect(Angle(degrees: 25))
-                        .animation(.spring(duration: 0.4).repeatForever(), value: fingerMove)
+                    if isShowHand {
+                        Image("fingerImage")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80)
+                            .scaleEffect(fingerMove ? 0.9: 1)
+                            .rotationEffect(Angle(degrees: 25))
+                            .animation(.spring(duration: 0.4).repeatForever(), value: fingerMove)
+                    }
             }
             .task {
                 returnimage = await loadImage()
             }
             .onTapGesture {
+                isShowHand = false
                 isShowDetail = true
                 isFront = true
             }
