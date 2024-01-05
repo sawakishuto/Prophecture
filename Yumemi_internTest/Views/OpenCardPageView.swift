@@ -54,7 +54,7 @@ struct OpenCardPageView: View {
                 })
                 .padding(.top, 480)
             }
-            
+//            カードタップ時に表示
             if isShowDetail {
                 Image("x_logo")
                     .resizable()

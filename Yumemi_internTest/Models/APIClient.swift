@@ -3,19 +3,19 @@
 //  Yumemi_internTest
 //
 //  Created by 澤木柊斗 on 2023/12/23.
-//
+//　実際にAPI通信を行うModel
 
 import Foundation
 
 struct APIClient {
     private let baseURL = URL(string: "https://yumemi-ios-junior-engineer-codecheck.app.swift.cloud")!
     func StartSession(name: String, birthday: YearMonthDay, blood_type: String, today: YearMonthDay) async -> Result<APIResponseInfo, APIClientError> {
-
+//        パスの追加
         let urlComponents = URLComponents(
             url: baseURL.appending(path: "/my_fortune"),
             resolvingAgainstBaseURL: true
         )
-
+//　　　　URLに不具合が出た場合
         guard let url = urlComponents?.url else {
             print("❌invalidURL")
             return .failure(.urlError)
@@ -45,6 +45,7 @@ struct APIClient {
             let (data, response) = try await URLSession.shared.data(for: request)
                 guard let response = response as? HTTPURLResponse else {
                     print("❌invalidResponse")
+//                  responseの失敗
                     return .failure(.responseError)
                 }
 
@@ -55,10 +56,12 @@ struct APIClient {
                         return .success(decodedData)
                     } catch {
                         print("❌parse failure")
+//                        パースの失敗
                         return .failure(.parseError)
                     }
                 } else {
                     print("❌session failure")
+//                    通信に何かしらの失敗があった場合
                     return .failure(.sessionError)
                 }
         } catch {

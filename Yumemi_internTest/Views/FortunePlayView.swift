@@ -8,25 +8,26 @@
 import SwiftUI
 import CoreData
 import AVFoundation
-struct FortunePlayView: View {
-
-    enum Blood_type: String, CaseIterable, Identifiable {
-        case a
-        case b
-        case o
-        case ab
-        var blood_type: String {
-            switch self {
-            case .a: return "a"
-            case .b: return "b"
-            case .o: return "o"
-            case .ab: return "ab"
-            }
-        }
-        var id: Self {
-            self
+//　血液型のパターン定義
+enum Blood_type: String, CaseIterable, Identifiable {
+    case a
+    case b
+    case o
+    case ab
+    var blood_type: String {
+        switch self {
+        case .a: return "a"
+        case .b: return "b"
+        case .o: return "o"
+        case .ab: return "ab"
         }
     }
+    var id: Self {
+        self
+    }
+}
+
+struct FortunePlayView: View {
 
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var ViewModel = FortuneViewModel()
@@ -61,10 +62,12 @@ struct FortunePlayView: View {
                                 message = "名前を入力してください"
                             } else {
                                 withAnimation(.easeInOut(duration: 0.7)) {
+
                                     self.slideOffset = -1000
                                     PaperMusic.play()
                                     isShowSwipe = true
                                 }
+                                // 占いの実行
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                     ViewModel.executionFortune(
                                         name: name,
@@ -83,6 +86,7 @@ struct FortunePlayView: View {
 
                                 }
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//                                    実行できたらカードを表示させる
                                     isResult = true
                                 }
                             }
