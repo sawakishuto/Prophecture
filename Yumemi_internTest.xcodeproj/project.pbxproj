@@ -84,6 +84,7 @@
 		08E40A442B43144100DE1C35 /* OpenURLViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLViewModel.swift; sourceTree = "<group>"; };
 		08E40A462B46D3AA00DE1C35 /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		08E40A482B46D3B700DE1C35 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
+		08FFDF432B477E4B00EB2851 /* Yumemi-internTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Yumemi-internTest-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +135,9 @@
 		0804BBB72B346670003A484A /* Yumemi_internTest */ = {
 			isa = PBXGroup;
 			children = (
+				08FFDF432B477E4B00EB2851 /* Yumemi-internTest-Info.plist */,
 				0804BBB82B346670003A484A /* Yumemi_internTestApp.swift */,
+				084726082B47827700024436 /* Entities */,
 				084D83662B3A79E9002E5737 /* Views */,
 				084D835B2B37B3DD002E5737 /* ViewModels */,
 				084D83522B366CE4002E5737 /* Models */,
@@ -171,11 +174,18 @@
 			path = Yumemi_internTestUITests;
 			sourceTree = "<group>";
 		};
-		084D83522B366CE4002E5737 /* Models */ = {
+		084726082B47827700024436 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				084D83462B36552E002E5737 /* Model.swift */,
 				084D83622B3A67FF002E5737 /* ViewType.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		084D83522B366CE4002E5737 /* Models */ = {
+			isa = PBXGroup;
+			children = (
 				08E40A462B46D3AA00DE1C35 /* CoreDataModel.swift */,
 				084D83532B366DA2002E5737 /* APIClient.swift */,
 				084D83572B36AE19002E5737 /* APIClientError.swift */,
@@ -533,9 +543,9 @@
 				DEVELOPMENT_TEAM = 5285K4Z956;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Yumemi-internTest-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -564,9 +574,9 @@
 				DEVELOPMENT_TEAM = 5285K4Z956;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Yumemi-internTest-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
