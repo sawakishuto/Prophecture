@@ -3,7 +3,7 @@
 //  Yumemi_internTest
 //
 //  Created by 澤木柊斗 on 2023/12/21.
-//
+//　情報を入力して占いを実行するView
 
 import SwiftUI
 import CoreData
@@ -27,7 +27,7 @@ struct FortunePlayView: View {
             self
         }
     }
-    
+
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var ViewModel = FortuneViewModel()
     @State private var isShowSwipe: Bool = false
@@ -110,7 +110,7 @@ struct FortunePlayView: View {
                 withAnimation(.easeInOut(duration: 0.7)) {
                     self.imgOffset = -UIScreen.main.bounds.width * 2
                 }
-        }
+            }
             .animation(.easeInOut(duration: 0.3), value: isShowSwipe)
 
             .background(alignment: .center) {
@@ -138,6 +138,7 @@ struct FortunePlayView: View {
 }
 
 private extension FortunePlayView {
+    //    占いの情報を入力するパーツ
     var mainView: some View {
         ZStack {
             Image("karteImage")
@@ -179,6 +180,7 @@ private extension FortunePlayView {
         )
     }
     var birthday: some View {
+        //        誕生日を入力するパーツ（長くなってしまったので切り出し）
         HStack {
             Picker(selection: self.$year, label: Text("年")){
                 ForEach(1950..<2025){ _x in
@@ -207,6 +209,7 @@ private extension FortunePlayView {
         }
     }
     func getCurrentTime() -> DateComponents {
+        //　　現在時刻を取得する
         let currentDate: Date = Date()
         let calender = Calendar.current
         let calComponent = calender.dateComponents([

@@ -3,7 +3,7 @@
 //  Yumemi_internTest
 //
 //  Created by 澤木柊斗 on 2023/12/27.
-//
+// 　カードを選ぶView
 
 import SwiftUI
 import AVFoundation
@@ -19,7 +19,7 @@ struct ResultView: View {
             case .normal: return 1.0
             case .large: return 1.5
             case .small: return 0.7
-
+                
             }
         }
         var downcardSituation: Double {
@@ -55,7 +55,7 @@ struct ResultView: View {
     let returnBrief: String
     let userName: String
     let ViewType: ViewTypeModel
-
+    
     private let CardAppear = try! AVAudioPlayer(data: NSDataAsset(name: "cardApear")!.data)
     @State private var isShowMessage: Bool = false
     @State private var appearOffset: Double = 0.0
@@ -70,11 +70,11 @@ struct ResultView: View {
     @State private var goOpenCard: Bool = false
     @State private var cardStates: cardState = .normal
     @State var isShowDetail: Bool = false
-
+    
     var body: some View {
         if !goOpenCard {
             GeometryReader { geometory in
-
+                
                 ZStack(alignment: .center) {
                     Image("tableImage")
                         .resizable()
@@ -85,7 +85,7 @@ struct ResultView: View {
                     VStack(alignment: .center, spacing: 0) {
                         upCardView
                             .padding(.bottom, 75)
-                    if isShowMessage {
+                        if isShowMessage {
                             Text("カードを選んでください")
                                 .foregroundStyle(.white)
                                 .font(.title)
@@ -106,7 +106,7 @@ struct ResultView: View {
                             .padding(.top, 500)
                             .fontWeight(.black)
                     }
-
+                    
                 }
                 .onTapGesture {
                     cardStates = .normal
@@ -118,7 +118,7 @@ struct ResultView: View {
                 .animation(.easeInOut(duration: 0.3), value: isShowMessage)
             }
             .onAppear {
-
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                     CardAppear.play()
                     upCardOffset = 0
@@ -144,6 +144,7 @@ struct ResultView: View {
     }
 }
 private extension ResultView {
+    //    二枚のうち上のカードのパーツ
     var upCardView: some View {
         Image("cardImage")
             .resizable()
@@ -157,9 +158,11 @@ private extension ResultView {
                 downCardZ_Index = 9
                 upCardZ_Index = 10
             }
-
+        
     }
     var downCardView: some View {
+        //    二枚のうち下のカードのパーツ
+        
         Image("cardImage")
             .resizable()
             .scaledToFit()

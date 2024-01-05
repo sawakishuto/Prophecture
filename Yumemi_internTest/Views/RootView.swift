@@ -3,7 +3,7 @@
 //  Yumemi_internTest
 //
 //  Created by 澤木柊斗 on 2023/12/26.
-//
+//　大元のView
 
 import SwiftUI
 import AVFoundation

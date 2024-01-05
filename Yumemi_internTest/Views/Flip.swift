@@ -13,7 +13,7 @@ struct Flip<Front: View, Back: View>: View {
     let duration: Double
     let front: () -> Front
     let back: () -> Back
-
+    
     init(isFront: Bool,
          duration: Double = 1.0,
          @ViewBuilder front: @escaping () -> Front,
@@ -24,7 +24,7 @@ struct Flip<Front: View, Back: View>: View {
         self.front = front
         self.back = back
     }
-
+    
     var body: some View {
         ZStack {
             if self.canShowFrontView {
@@ -35,7 +35,7 @@ struct Flip<Front: View, Back: View>: View {
             else {
                 back()
                     .rotation3DEffect(Angle(degrees: 180), axis: (x: 0, y: 1, z: 0))
-
+                
             }
         }
         .onChange(of: isFront, perform: {

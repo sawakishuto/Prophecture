@@ -3,7 +3,7 @@
 //  Yumemi_internTest
 //
 //  Created by 澤木柊斗 on 2023/12/31.
-//
+//  カードをめくって結果を見るView
 
 import SwiftUI
 
@@ -19,7 +19,7 @@ struct OpenCardPageView: View {
     let returnLogo_url: String?
     let returnBrief: String
     let ViewType: ViewTypeModel
-
+    
     var body: some View {
         ZStack {
             Image("backgroundImage")
@@ -32,7 +32,7 @@ struct OpenCardPageView: View {
                 .fontWeight(.black)
                 .font(.system(size: 30))
                 .foregroundStyle(.white)
-
+            
             CardFront(
                 isShowDetail: $isShowDetail,
                 returnName: returnName,
@@ -54,7 +54,7 @@ struct OpenCardPageView: View {
                 })
                 .padding(.top, 480)
             }
-
+            
             if isShowDetail {
                 Image("x_logo")
                     .resizable()
@@ -78,7 +78,7 @@ struct OpenCardPageView: View {
                         ViewType.viewType = .menuPage
                     }
             }
-
+            
         }
     }
 }

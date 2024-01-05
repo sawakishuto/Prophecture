@@ -30,10 +30,10 @@ struct CardFront: View {
             ZStack{
                 VStack {
                     if let returnimage = returnimage {
-                       Image(uiImage: returnimage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 180)
+                        Image(uiImage: returnimage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 180)
                     }
 
 
@@ -48,12 +48,12 @@ struct CardFront: View {
                         .font(.subheadline)
                         .fontWeight(.light)
                     returnHas_coast_line ?
-                        Text("海岸沿い：あり")
-                            .font(.subheadline)
-                            .fontWeight(.thin) :
-                        Text("海岸：なし")
-                            .font(.subheadline)
-                            .fontWeight(.thin)
+                    Text("海岸沿い：あり")
+                        .font(.subheadline)
+                        .fontWeight(.thin) :
+                    Text("海岸：なし")
+                        .font(.subheadline)
+                        .fontWeight(.thin)
                     HStack {
                         Text("県民の日:")
                             .font(.subheadline)
@@ -91,7 +91,7 @@ struct CardFront: View {
                         blue: 0.9
                     ), lineWidth: 10
                 )
-                            )
+            )
             .onAppear {
                 resultMusic.play()
             }
@@ -103,15 +103,15 @@ struct CardFront: View {
                     .scaledToFit()
                     .frame(width: 300)
 
-                    if isShowHand {
-                        Image("fingerImage")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 80)
-                            .scaleEffect(fingerMove ? 0.9: 1)
-                            .rotationEffect(Angle(degrees: 25))
-                            .animation(.spring(duration: 0.4).repeatForever(), value: fingerMove)
-                    }
+                if isShowHand {
+                    Image("fingerImage")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80)
+                        .scaleEffect(fingerMove ? 0.9: 1)
+                        .rotationEffect(Angle(degrees: 25))
+                        .animation(.spring(duration: 0.4).repeatForever(), value: fingerMove)
+                }
             }
             .task {
                 returnimage = await loadImage()
@@ -122,17 +122,17 @@ struct CardFront: View {
                 isFront = true
             }
             .onAppear {
-                    withAnimation {
-                        fingerMove.toggle()
-                    }
+                withAnimation {
+                    fingerMove.toggle()
                 }
+            }
         }
         )
 
 
     }
     func loadImage() async -> UIImage? {
-      guard let url = URL(string: returnLogo_url ?? "") else { return nil}
+        guard let url = URL(string: returnLogo_url ?? "") else { return nil}
 
         guard let data = try? await URLSession.shared.data(from: url).0 else { return nil }
         let image = UIImage(data: data)
